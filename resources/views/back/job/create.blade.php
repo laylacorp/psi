@@ -504,65 +504,77 @@
                                                                             <div class="card-block">
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <h4 class="sub-title">Benefit Pekerjaan</h4>
+                                                                                        <h4 class="sub-title">Benefit
+                                                                                            Pekerjaan</h4>
                                                                                         <div
                                                                                             class="border-checkbox-section">
-                                                                                            
-                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+
+                                                                                            <div
+                                                                                                class="border-checkbox-group border-checkbox-group-success">
                                                                                                 <input
                                                                                                     class="border-checkbox"
                                                                                                     type="checkbox"
                                                                                                     id="dtt">
                                                                                                 <label
                                                                                                     class="border-checkbox-label"
-                                                                                                    for="dtt">Disediakan tempat tinggal
+                                                                                                    for="dtt">Disediakan
+                                                                                                    tempat tinggal
                                                                                                 </label>
                                                                                             </div>
 
-                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                            <div
+                                                                                                class="border-checkbox-group border-checkbox-group-success">
                                                                                                 <input
                                                                                                     class="border-checkbox"
                                                                                                     type="checkbox"
                                                                                                     id="dm">
                                                                                                 <label
                                                                                                     class="border-checkbox-label"
-                                                                                                    for="dm">Disediakan makan
+                                                                                                    for="dm">Disediakan
+                                                                                                    makan
                                                                                                 </label>
                                                                                             </div>
 
-                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                            <div
+                                                                                                class="border-checkbox-group border-checkbox-group-success">
                                                                                                 <input
                                                                                                     class="border-checkbox"
                                                                                                     type="checkbox"
                                                                                                     id="dtm">
                                                                                                 <label
                                                                                                     class="border-checkbox-label"
-                                                                                                    for="dtm">Disediakan tunjangan makan
+                                                                                                    for="dtm">Disediakan
+                                                                                                    tunjangan makan
                                                                                                 </label>
                                                                                             </div>
 
-                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                            <div
+                                                                                                class="border-checkbox-group border-checkbox-group-success">
                                                                                                 <input
                                                                                                     class="border-checkbox"
                                                                                                     type="checkbox"
                                                                                                     id="dak">
                                                                                                 <label
                                                                                                     class="border-checkbox-label"
-                                                                                                    for="dak">Disediakan asuransi kerja
+                                                                                                    for="dak">Disediakan
+                                                                                                    asuransi kerja
                                                                                                 </label>
                                                                                             </div>
-                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                            <div
+                                                                                                class="border-checkbox-group border-checkbox-group-success">
                                                                                                 <input
                                                                                                     class="border-checkbox"
                                                                                                     type="checkbox"
                                                                                                     id="dttk">
                                                                                                 <label
                                                                                                     class="border-checkbox-label"
-                                                                                                    for="dttk">Disediakan transportasi dari tempat tinggal ke tempat kerja
+                                                                                                    for="dttk">Disediakan
+                                                                                                    transportasi dari tempat
+                                                                                                    tinggal ke tempat kerja
 
                                                                                                 </label>
                                                                                             </div>
-                                                                                             
+
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -570,15 +582,17 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label class="col-form-label"
-                                                                                            for="paragraf">Paragraf Galeri</label>
+                                                                                            for="paragraf">Paragraf
+                                                                                            Galeri</label>
                                                                                         <textarea class="form-control form-control-success" name="paragraf" id="paragraf" cols="30" rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label class="col-form-label"
-                                                                                            for="paragraf">Uplaod Galeri</label>
-                                                                                            <input type="file"
+                                                                                            for="paragraf">Uplaod
+                                                                                            Galeri</label>
+                                                                                        <input type="file"
                                                                                             class="form-control form-control-success"
                                                                                             id="rentang_usia"
                                                                                             name="rentang_usia">
@@ -587,7 +601,8 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label class="col-form-label"
-                                                                                            for="info_lain">Informasi Lainnya</label>
+                                                                                            for="info_lain">Informasi
+                                                                                            Lainnya</label>
                                                                                         <textarea class="form-control form-control-success" name="info_lain" id="info_lain" cols="30" rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
@@ -595,7 +610,8 @@
                                                                                     <div class="col-sm-12">
                                                                                         <label class="col-form-label"
                                                                                             for="disclaimer">Disclaimer</label>
-                                                                                        <textarea class="form-control form-control-success" name="disclaimer" id="disclaimer" cols="30" rows="4"></textarea>
+                                                                                        <textarea class="form-control form-control-success" name="disclaimer" id="disclaimer" cols="30"
+                                                                                            rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
 
@@ -611,9 +627,18 @@
 
                                                                 </div>
                                                             </div>
+                                                        
+                                                            <button type="button" class="btn btn-primary waves-effect waves-light mt-3" id="btn-save-kategori-job" style="float: right;">
+                                                                <i class="fas fa-save"></i> Simpan
+                                                              </button>
+                                                              
                                                         </div>
+                                                            
+                                                          
+                                                     
+                                                        
                                                     </div>
-
+                                                     
                                                 </div>
                                             </div>
 
