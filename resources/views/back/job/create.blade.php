@@ -5,6 +5,16 @@
     {{-- <link rel="stylesheet" href="{{ asset('template') }}/files/bower_components/select2/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/files/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/files/bower_components/multiselect/css/multi-select.css" /> --}}
+
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('template') }}/files/assets/icon/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('template') }}/files/bower_components/switchery/css/switchery.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('template') }}/files/bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css" />
 @endpush
 
 @section('content')
@@ -128,7 +138,8 @@
                                                                                         class="form-control form-control-success"
                                                                                         id="jenis_pembayaran"
                                                                                         name="jenis_pembayaran" required>
-                                                                                        <option value="">--Pilih jenis
+                                                                                        <option value="">--Pilih
+                                                                                            jenis
                                                                                             pembayaran--</option>
                                                                                         <option value="Bulan">Bulan
                                                                                         </option>
@@ -326,7 +337,8 @@
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-6">
                                                                                     <label class="col-form-label"
-                                                                                        for="kerja_lembur">Kerja Lembur</label>
+                                                                                        for="kerja_lembur">Kerja
+                                                                                        Lembur</label>
                                                                                     <input type="date"
                                                                                         class="form-control form-control-success"
                                                                                         id="kerja_lembur"
@@ -334,11 +346,11 @@
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <label class="col-form-label"
-                                                                                        for="bahasa">Bahasa Yang Digunakan</label>
+                                                                                        for="bahasa">Bahasa Yang
+                                                                                        Digunakan</label>
                                                                                     <input type="text"
                                                                                         class="form-control form-control-success"
-                                                                                        id="bahasa"
-                                                                                        name="bahasa">
+                                                                                        id="bahasa" name="bahasa">
                                                                                 </div>
                                                                             </div>
 
@@ -348,7 +360,7 @@
                                                                                         for="deskripsi">Deksripsi</label>
                                                                                     <textarea class="form-control form-control-success" name="deskripsi" id="deskripsi" cols="30" rows="4"></textarea>
                                                                                 </div>
-                                                                                 
+
 
                                                                             </div>
 
@@ -362,7 +374,7 @@
 
                                                             </div>
                                                             <div class="tab-pane" id="messages7" role="tabpanel">
-                                                               
+
                                                                 <div class="modal-content">
 
                                                                     <div class="modal-body">
@@ -370,401 +382,253 @@
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-4">
                                                                                     <label class="col-form-label"
-                                                                                        for="jenis_kelamin">Jenis Kelamin</label>
-                                                                                        <select
+                                                                                        for="jenis_kelamin">Jenis
+                                                                                        Kelamin</label>
+                                                                                    <select
                                                                                         class="form-control form-control-success"
-                                                                                        id="hari_kerja" name="hari_kerja"
-                                                                                        required>
-                                                                                        <option value="">--Pilih jenis kelamin--</option>
-                                                                                        <option value="Laki-laki">Laki-laki</option>
-                                                                                        <option value="Perempuan">Perempuan</option>
+                                                                                        id="jenis_kelamin"
+                                                                                        name="jenis_kelamin" required>
+                                                                                        <option value="">--Pilih
+                                                                                            jenis kelamin--</option>
+                                                                                        <option value="Laki-laki">Laki-laki
+                                                                                        </option>
+                                                                                        <option value="Perempuan">Perempuan
+                                                                                        </option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <label class="col-form-label"
-                                                                                        for="tinggi_badan">Tinggi Badan</label>
+                                                                                        for="tinggi_badan">Tinggi
+                                                                                        Badan</label>
                                                                                     <input type="text"
                                                                                         class="form-control form-control-success"
-                                                                                        id="tinggi_badan" name="tinggi_badan">
+                                                                                        id="tinggi_badan"
+                                                                                        name="tinggi_badan">
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <label class="col-form-label"
-                                                                                        for="berat_badan">Berat Badan</label>
+                                                                                        for="berat_badan">Berat
+                                                                                        Badan</label>
                                                                                     <input type="text"
                                                                                         class="form-control form-control-success"
-                                                                                        id="berat_badan" name="berat_badan">
+                                                                                        id="berat_badan"
+                                                                                        name="berat_badan">
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="form-group row">
-                                                                                <div class="col-sm-6">
+                                                                                <div class="col-sm-4">
                                                                                     <label class="col-form-label"
-                                                                                        for="hari_kerja">Hari Kerja</label>
+                                                                                        for="rentang_usia">Tinggi
+                                                                                        Badan</label>
+                                                                                    <input type="text"
+                                                                                        class="form-control form-control-success"
+                                                                                        id="rentang_usia"
+                                                                                        name="rentang_usia">
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <label class="col-form-label"
+                                                                                        for="level_bahasa">Jenis
+                                                                                        Kelamin</label>
                                                                                     <select
                                                                                         class="form-control form-control-success"
-                                                                                        id="hari_kerja" name="hari_kerja"
-                                                                                        required>
-                                                                                        <option value="">--Pilih hari
-                                                                                            kerja--</option>
-                                                                                        <option value="5">5 Hari Per
-                                                                                            Minggu</option>
-                                                                                        <option value="6">6 Hari Per
-                                                                                            Minggu</option>
+                                                                                        id="level_bahasa"
+                                                                                        name="level_bahasa" required>
+                                                                                        <option value="">--Pilih
+                                                                                            jenis kelamin--</option>
+                                                                                        <option value="Basic">Basic
+                                                                                        </option>
+                                                                                        <option value="Intermediate">
+                                                                                            Intermediate</option>
+                                                                                        <option value="Advanced">Advanced
+                                                                                        </option>
                                                                                     </select>
-
                                                                                 </div>
-                                                                                <div class="col-sm-6">
+                                                                                <div class="col-sm-4">
                                                                                     <label class="col-form-label"
-                                                                                        for="cuti_kerja">Cuti Kerja</label>
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-success"
-                                                                                        id="cuti_kerja" name="cuti_kerja">
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                            <div class="form-group row">
-                                                                                <div class="col-sm-6">
-                                                                                    <label class="col-form-label"
-                                                                                        for="masa_percobaan">Masa
-                                                                                        Percobaan</label>
+                                                                                        for="pengalaman_kerja">Pengalaman
+                                                                                        Kerja</label>
                                                                                     <select
                                                                                         class="form-control form-control-success"
-                                                                                        id="masa_percobaan"
-                                                                                        name="masa_percobaan" required>
-                                                                                        <option value="">--Pilih hari
-                                                                                            kerja--</option>
-                                                                                        <option value="5">5 Hari Per
-                                                                                            Minggu</option>
-                                                                                        <option value="6">6 Hari Per
-                                                                                            Minggu</option>
+                                                                                        id="pengalaman_kerja"
+                                                                                        name="pengalaman_kerja" required>
+                                                                                        <option value="">--Pilih
+                                                                                            pengalaman kerja--</option>
+                                                                                        <option
+                                                                                            value="Tidak diperlukan pengalaman kerja">
+                                                                                            Tidak diperlukan pengalaman
+                                                                                            kerja
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="Min. 6 bulan bekerja pada posisi yang sama">
+                                                                                            Min. 6 bulan bekerja pada posisi
+                                                                                            yang sama
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="Min. 1 Tahun bekerja pada posisi yang sama">
+                                                                                            Min. 1 Tahun bekerja pada posisi
+                                                                                            yang sama
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="Min. 2 - 5 Tahun bekerja pada posisi yang sama">
+                                                                                            Min. 2 - 5 Tahun bekerja pada
+                                                                                            posisi yang sama
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="Diperlukan pengalaman kerja atau lulusan pendidikan dengan jurusan yang berkaitan">
+                                                                                            Diperlukan pengalaman kerja atau
+                                                                                            lulusan pendidikan dengan
+                                                                                            jurusan yang berkaitan
+                                                                                        </option>
                                                                                     </select>
-
-                                                                                </div>
-                                                                                <div class="col-sm-6">
-                                                                                    <label class="col-form-label"
-                                                                                        for="mata_uang_gaji">Mata Uang
-                                                                                        Gaji</label>
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-success"
-                                                                                        id="mata_uang_gaji"
-                                                                                        name="mata_uang_gaji">
                                                                                 </div>
                                                                             </div>
 
 
-                                                                            <div class="form-group row">
-                                                                                <div class="col-sm-6">
-                                                                                    <label class="col-form-label"
-                                                                                        for="kerja_lembur">Kerja Lembur</label>
-                                                                                    <input type="date"
-                                                                                        class="form-control form-control-success"
-                                                                                        id="kerja_lembur"
-                                                                                        name="kerja_lembur">
-                                                                                </div>
-                                                                                <div class="col-sm-6">
-                                                                                    <label class="col-form-label"
-                                                                                        for="bahasa">Bahasa Yang Digunakan</label>
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-success"
-                                                                                        id="bahasa"
-                                                                                        name="bahasa">
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="form-group row">
-                                                                                <div class="col-sm-12">
-                                                                                    <label class="col-form-label"
-                                                                                        for="deskripsi">Deksripsi</label>
-                                                                                    <textarea class="form-control form-control-success" name="deskripsi" id="deskripsi" cols="30" rows="4"></textarea>
-                                                                                </div>
-                                                                                 
-
-                                                                            </div>
 
 
 
                                                                         </div>
                                                                     </div>
-
-
-                                                                </div>  
-
-                                                            </div>
-                                                            <div class="tab-pane" id="settings7" role="tabpanel">
-                                                                <p class="m-0">4.Cras consequat in enim ut efficitur.
-                                                                    Nulla
-                                                                    posuere elit quis auctor
-                                                                    interdum praesent sit amet nulla vel enim amet. Donec
-                                                                    convallis
-                                                                    tellus neque, et
-                                                                    imperdiet felis amet.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            {{-- Modal Tambah Data --}}
-            <div class="modal fade" id="modal-kategori-job" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <form id="form-kategori-job" action="" method="POST">
-                        @csrf <!-- Tambahkan token CSRF -->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Form Input Job</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-
-
-                                <div class="card">
-
-                                    <div class="card-block tab-icon">
-
-                                        <div class="row">
-                                            <div class="col-lg-12 col-xl-12">
-
-
-
-                                                <ul class="nav nav-tabs md-tabs " role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" data-toggle="tab" href="#home7"
-                                                            role="tab"><i class="fas fa-home"></i>Informasi Umum</a>
-                                                        <div class="slide"></div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" href="#profile7"
-                                                            role="tab"><i class="fas fa-bookmark"></i>Ketentuan
-                                                            Pekerjaan</a>
-                                                        <div class="slide"></div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" href="#messages7"
-                                                            role="tab"><i class="fas fa-users"></i>Kualifikasi
-                                                            Kandidat</a>
-                                                        <div class="slide"></div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" href="#settings7"
-                                                            role="tab"><i class="fas fa-server"></i>Lainnya</a>
-                                                        <div class="slide"></div>
-                                                    </li>
-                                                </ul>
-
-                                                <div class="tab-content card-block">
-                                                    <div class="tab-pane active" id="home7" role="tabpanel">
-
-
-
-                                                        <div class="modal-content">
-
-                                                            <div class="modal-body">
-                                                                <div class="card-block">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="nama_job">Nama Job</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-success"
-                                                                                id="nama_job" name="nama_job">
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="tanggal_tutup">Tanggal Lowongan
-                                                                                Ditutup</label>
-                                                                            <input type="date"
-                                                                                class="form-control form-control-success"
-                                                                                id="tanggal_tutup" name="tanggal_tutup">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="gaji">Gaji</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-success"
-                                                                                id="gaji" name="gaji">
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="jenis_pembayaran">Jenis
-                                                                                Pembayaran</label>
-                                                                            <select
-                                                                                class="form-control form-control-success"
-                                                                                id="jenis_pembayaran"
-                                                                                name="jenis_pembayaran" required>
-                                                                                <option value="">--Pilih jenis
-                                                                                    pembayaran--</option>
-                                                                                <option value="Bulan">Bulan</option>
-                                                                                <option value="Jam">Jam</option>
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="estimasi_minimil">Estimasi IDR
-                                                                                Min</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-success"
-                                                                                id="estimasi_minimil"
-                                                                                name="estimasi_minimil">
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="estimasi_maksimal">Estimasi IDR
-                                                                                Mak</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-success"
-                                                                                id="estimasi_maksimal"
-                                                                                name="estimasi_maksimal">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-12">
-                                                                            <label class="col-form-label"
-                                                                                for="gaji_diterima">Gaji Yang
-                                                                                Diterima</label>
-                                                                            <select
-                                                                                class="form-control form-control-success"
-                                                                                id="gaji_diterima" name="gaji_diterima"
-                                                                                required>
-                                                                                <option value="">--Pilih gaji yang
-                                                                                    diterima--</option>
-                                                                                <option value="Bersih">Bersih</option>
-                                                                                <option value="Kotor">Kotor</option>
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="tanggal_kurs">Tanggal Kurs</label>
-                                                                            <input type="date"
-                                                                                class="form-control form-control-success"
-                                                                                id="tanggal_kurs" name="tanggal_kurs">
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="nominal_kurs">Nominal Kurs</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-success"
-                                                                                id="nominal_kurs" name="nominal_kurs">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="negara_id">Negara</label>
-
-                                                                            <select id="negara_id" name="negara_id"
-                                                                                class="form-control">
-                                                                                <option value="">Pilih Negara
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <label class="col-form-label"
-                                                                                for="kategori_job_id">Industri
-                                                                                Pekerjaan</label>
-                                                                            <select id="kategori_job_id"
-                                                                                name="kategori_job_id"
-                                                                                class="form-control">
-                                                                                <option value="">Pilih Industri
-                                                                                    Pekerjaan</option>
-                                                                            </select>
-                                                                        </div>
-
-                                                                    </div>
-
 
 
                                                                 </div>
+
                                                             </div>
+                                                            <div class="tab-pane" id="settings7" role="tabpanel">
+                                                                <div class="modal-content">
+
+                                                                    <div class="modal-body">
+                                                                        <div class="card-block">
+
+                                                                            <div class="card-block">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <h4 class="sub-title">Benefit Pekerjaan</h4>
+                                                                                        <div
+                                                                                            class="border-checkbox-section">
+                                                                                            
+                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                                <input
+                                                                                                    class="border-checkbox"
+                                                                                                    type="checkbox"
+                                                                                                    id="dtt">
+                                                                                                <label
+                                                                                                    class="border-checkbox-label"
+                                                                                                    for="dtt">Disediakan tempat tinggal
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                                <input
+                                                                                                    class="border-checkbox"
+                                                                                                    type="checkbox"
+                                                                                                    id="dm">
+                                                                                                <label
+                                                                                                    class="border-checkbox-label"
+                                                                                                    for="dm">Disediakan makan
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                                <input
+                                                                                                    class="border-checkbox"
+                                                                                                    type="checkbox"
+                                                                                                    id="dtm">
+                                                                                                <label
+                                                                                                    class="border-checkbox-label"
+                                                                                                    for="dtm">Disediakan tunjangan makan
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                                <input
+                                                                                                    class="border-checkbox"
+                                                                                                    type="checkbox"
+                                                                                                    id="dak">
+                                                                                                <label
+                                                                                                    class="border-checkbox-label"
+                                                                                                    for="dak">Disediakan asuransi kerja
+                                                                                                </label>
+                                                                                            </div>
+                                                                                            <div class="border-checkbox-group border-checkbox-group-success">
+                                                                                                <input
+                                                                                                    class="border-checkbox"
+                                                                                                    type="checkbox"
+                                                                                                    id="dttk">
+                                                                                                <label
+                                                                                                    class="border-checkbox-label"
+                                                                                                    for="dttk">Disediakan transportasi dari tempat tinggal ke tempat kerja
+
+                                                                                                </label>
+                                                                                            </div>
+                                                                                             
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label class="col-form-label"
+                                                                                            for="paragraf">Paragraf Galeri</label>
+                                                                                        <textarea class="form-control form-control-success" name="paragraf" id="paragraf" cols="30" rows="4"></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label class="col-form-label"
+                                                                                            for="paragraf">Uplaod Galeri</label>
+                                                                                            <input type="file"
+                                                                                            class="form-control form-control-success"
+                                                                                            id="rentang_usia"
+                                                                                            name="rentang_usia">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label class="col-form-label"
+                                                                                            for="info_lain">Informasi Lainnya</label>
+                                                                                        <textarea class="form-control form-control-success" name="info_lain" id="info_lain" cols="30" rows="4"></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label class="col-form-label"
+                                                                                            for="disclaimer">Disclaimer</label>
+                                                                                        <textarea class="form-control form-control-success" name="disclaimer" id="disclaimer" cols="30" rows="4"></textarea>
+                                                                                    </div>
+                                                                                </div>
 
 
+
+
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
                                                         </div>
-
-
-
-
                                                     </div>
-                                                    <div class="tab-pane" id="profile7" role="tabpanel">
-                                                        <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla
-                                                            posuere elit quis auctor
-                                                            interdum praesent sit amet nulla vel enim amet. Donec convallis
-                                                            tellus neque, et
-                                                            imperdiet felis amet.</p>
-                                                    </div>
-                                                    <div class="tab-pane" id="messages7" role="tabpanel">
-                                                        <p class="m-0">3. This is Photoshop's version of Lorem IpThis is
-                                                            Photoshop's version
-                                                            of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                                                            Aenean sollicitudin,
-                                                            lorem quis bibendum auctor, nisi elit consequat ipsum, nec
-                                                            sagittis sem nibh id
-                                                            elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo
-                                                            ligula eget dolor. Aenean mas Cum sociis natoque penatibus et
-                                                            magnis dis.....</p>
-                                                    </div>
-                                                    <div class="tab-pane" id="settings7" role="tabpanel">
-                                                        <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla
-                                                            posuere elit quis auctor
-                                                            interdum praesent sit amet nulla vel enim amet. Donec convallis
-                                                            tellus neque, et
-                                                            imperdiet felis amet.</p>
-                                                    </div>
+
                                                 </div>
                                             </div>
+
                                         </div>
-
                                     </div>
+
+
+
+
                                 </div>
-
-
-
-
-
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect "
-                                    data-dismiss="modal">Kembali</button>
-                                <button type="button" class="btn btn-primary waves-effect waves-light"
-                                    id="btn-save-kategori-job"><i class="fas fa-save"></i> Simpan</button>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
-            </div>
 
 
 
@@ -772,68 +636,69 @@
 
 
 
-        @endsection
+
+
+            @endsection
 
 
 
 
-        @push('script')
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            {{-- <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/select2/js/select2.full.min.js">
-            </script>
-            <script type="text/javascript" src="{{ asset('template') }}/files/assets/pages/advance-elements/select2-custom.js">
-            </script>
-            <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js">
-            </script>
-            <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/multiselect/js/jquery.multi-select.js"></script> --}}
+            @push('script')
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+                <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/switchery/js/switchery.min.js">
+                </script>
+
+                <script type="text/javascript"
+                    src="{{ asset('template') }}/files/bower_components/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
 
 
-            {{-- PERINTAH CARI NEGARA --}}
-            <script>
-                $(document).ready(function() {
-                    $.ajax({
-                        url: '{{ route('negara.list') }}',
-                        type: 'GET',
-                        success: function(data) {
-                            var options = '';
-                            data.forEach(function(negara) {
-                                options += '<option value="' + negara.id + '">' + negara.nama_negara +
-                                    '</option>';
-                            });
-                            $('#negara_id').append(options);
-                        }
-                    });
+                {{-- PERINTAH CARI NEGARA --}}
+                <script>
+                    $(document).ready(function() {
+                        $.ajax({
+                            url: '{{ route('negara.list') }}',
+                            type: 'GET',
+                            success: function(data) {
+                                var options = '';
+                                data.forEach(function(negara) {
+                                    options += '<option value="' + negara.id + '">' + negara.nama_negara +
+                                        '</option>';
+                                });
+                                $('#negara_id').append(options);
+                            }
+                        });
 
 
-
-                });
-            </script>
-
-
-            <script>
-                $(document).ready(function() {
-                    $.ajax({
-                        url: '{{ route('kategori_job.list') }}',
-                        type: 'GET',
-                        success: function(data) {
-                            console.log(data);
-                            var options = '';
-                            data.forEach(function(kategori_job) {
-                                options += '<option value="' + kategori_job.id + '">' + kategori_job
-                                    .nama_kategori_job + '</option>';
-                            });
-                            $('#kategori_job_id').append(options);
-                        }
 
                     });
+                </script>
+
+
+                <script>
+                    $(document).ready(function() {
+                        $.ajax({
+                            url: '{{ route('kategori_job.list') }}',
+                            type: 'GET',
+                            success: function(data) {
+                                console.log(data);
+                                var options = '';
+                                data.forEach(function(kategori_job) {
+                                    options += '<option value="' + kategori_job.id + '">' + kategori_job
+                                        .nama_kategori_job + '</option>';
+                                });
+                                $('#kategori_job_id').append(options);
+                            }
+
+                        });
 
 
 
-                });
-            </script>
+                    });
+                </script>
 
 
-            {{-- <script>
+                {{-- <script>
                 $(document).ready(function() {
                     $.ajax({
                         url: '{{ route('getKategoriJob') }}',
@@ -862,152 +727,152 @@
 
 
 
-            {{-- TAMBAH --}}
-            <script>
-                $(document).ready(function() {
-                    $('#btn-save-kategori-job').click(function() {
-                        var form = $('#form-kategori-job');
-                        $.ajax({
-                            url: form.attr('action'),
-                            type: 'POST',
-                            data: form.serialize(),
-                            success: function(response) {
-                                $('#modal-kategori-job').modal('hide');
-                                Swal.fire({
-                                    title: 'Sukses!',
-                                    text: response.message,
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                }).then(function() {
-                                    location.reload();
-                                });
-                            },
-                            error: function(xhr) {
-                                var errorMessages = xhr.responseJSON.errors;
-                                var errorMessage = '';
-                                $.each(errorMessages, function(key, value) {
-                                    errorMessage += value + '<br>';
-                                });
-                                Swal.fire({
-                                    title: 'Error!',
-                                    html: errorMessage,
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                });
-                            }
+                {{-- TAMBAH --}}
+                <script>
+                    $(document).ready(function() {
+                        $('#btn-save-kategori-job').click(function() {
+                            var form = $('#form-kategori-job');
+                            $.ajax({
+                                url: form.attr('action'),
+                                type: 'POST',
+                                data: form.serialize(),
+                                success: function(response) {
+                                    $('#modal-kategori-job').modal('hide');
+                                    Swal.fire({
+                                        title: 'Sukses!',
+                                        text: response.message,
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    }).then(function() {
+                                        location.reload();
+                                    });
+                                },
+                                error: function(xhr) {
+                                    var errorMessages = xhr.responseJSON.errors;
+                                    var errorMessage = '';
+                                    $.each(errorMessages, function(key, value) {
+                                        errorMessage += value + '<br>';
+                                    });
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        html: errorMessage,
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                            });
                         });
                     });
-                });
-            </script>
+                </script>
 
-            {{-- EDIT dan UPDATE --}}
-            <script>
-                $(document).ready(function() {
-                    // Tampilkan data di modal edit
-                    $('.btn-edit').click(function() {
-                        var id = $(this).data('id');
-                        $.ajax({
-                            url: '/job/' + id + '/edit',
-                            type: 'GET',
-                            success: function(response) {
-                                $('#edit_nama_job').val(response.nama_job);
-                                $('#edit_urutan').val(response.urutan);
-                                // Set action form untuk update
-                                $('#form-edit-kategori-job').attr('action', '/job/' + id);
-                                $('#modal-edit').modal('show');
-                            },
-                            error: function(xhr) {
-                                // Handle error
-                            }
+                {{-- EDIT dan UPDATE --}}
+                <script>
+                    $(document).ready(function() {
+                        // Tampilkan data di modal edit
+                        $('.btn-edit').click(function() {
+                            var id = $(this).data('id');
+                            $.ajax({
+                                url: '/job/' + id + '/edit',
+                                type: 'GET',
+                                success: function(response) {
+                                    $('#edit_nama_job').val(response.nama_job);
+                                    $('#edit_urutan').val(response.urutan);
+                                    // Set action form untuk update
+                                    $('#form-edit-kategori-job').attr('action', '/job/' + id);
+                                    $('#modal-edit').modal('show');
+                                },
+                                error: function(xhr) {
+                                    // Handle error
+                                }
+                            });
+                        });
+
+                        // AJAX untuk update data
+                        $('#btn-update-kategori-job').click(function() {
+                            var form = $('#form-edit-kategori-job');
+                            $.ajax({
+                                url: form.attr('action'),
+                                type: 'POST',
+                                data: form.serialize() + '&_method=PUT',
+                                success: function(response) {
+                                    $('#modal-edit').modal('hide');
+                                    Swal.fire({
+                                        title: 'Sukses!',
+                                        text: response.message,
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    }).then(function() {
+                                        location.reload();
+                                    });
+                                },
+                                error: function(xhr) {
+                                    var errorMessages = xhr.responseJSON.errors;
+                                    var errorMessage = '';
+                                    $.each(errorMessages, function(key, value) {
+                                        errorMessage += value + '<br>';
+                                    });
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        html: errorMessage,
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                            });
                         });
                     });
+                </script>
 
-                    // AJAX untuk update data
-                    $('#btn-update-kategori-job').click(function() {
-                        var form = $('#form-edit-kategori-job');
-                        $.ajax({
-                            url: form.attr('action'),
-                            type: 'POST',
-                            data: form.serialize() + '&_method=PUT',
-                            success: function(response) {
-                                $('#modal-edit').modal('hide');
-                                Swal.fire({
-                                    title: 'Sukses!',
-                                    text: response.message,
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                }).then(function() {
-                                    location.reload();
-                                });
-                            },
-                            error: function(xhr) {
-                                var errorMessages = xhr.responseJSON.errors;
-                                var errorMessage = '';
-                                $.each(errorMessages, function(key, value) {
-                                    errorMessage += value + '<br>';
-                                });
-                                Swal.fire({
-                                    title: 'Error!',
-                                    html: errorMessage,
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                });
+                {{-- DELET --}}
+                <script>
+                    $(document).ready(function() {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                         });
-                    });
-                });
-            </script>
 
-            {{-- DELET --}}
-            <script>
-                $(document).ready(function() {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+                        $('.btn-hapus').click(function() {
+                            var id = $(this).data('id');
 
-                    $('.btn-hapus').click(function() {
-                        var id = $(this).data('id');
+                            Swal.fire({
+                                title: 'Apakah Anda yakin?',
+                                text: 'Data akan dihapus permanen!',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya, hapus!',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $.ajax({
 
-                        Swal.fire({
-                            title: 'Apakah Anda yakin?',
-                            text: 'Data akan dihapus permanen!',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Ya, hapus!',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $.ajax({
+                                        url: '/job/' + id,
+                                        type: 'DELETE',
 
-                                    url: '/job/' + id,
-                                    type: 'DELETE',
-
-                                    success: function(response) {
-                                        Swal.fire({
-                                            title: 'Sukses!',
-                                            text: response.message,
-                                            icon: 'success',
-                                            confirmButtonText: 'OK',
-                                        }).then(function() {
-                                            location.reload();
-                                        });
-                                    },
-                                    error: function(xhr) {
-                                        // Handle error
-                                        Swal.fire({
-                                            title: 'Error!',
-                                            text: 'Gagal menghapus data.',
-                                            icon: 'error',
-                                            confirmButtonText: 'OK',
-                                        });
-                                    },
-                                });
-                            }
+                                        success: function(response) {
+                                            Swal.fire({
+                                                title: 'Sukses!',
+                                                text: response.message,
+                                                icon: 'success',
+                                                confirmButtonText: 'OK',
+                                            }).then(function() {
+                                                location.reload();
+                                            });
+                                        },
+                                        error: function(xhr) {
+                                            // Handle error
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Gagal menghapus data.',
+                                                icon: 'error',
+                                                confirmButtonText: 'OK',
+                                            });
+                                        },
+                                    });
+                                }
+                            });
                         });
                     });
-                });
-            </script>
-        @endpush
+                </script>
+            @endpush
