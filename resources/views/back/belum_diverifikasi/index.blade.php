@@ -1,6 +1,8 @@
 @extends('back.layouts.app')
 @section('title', 'Halaman Belum Diverifikasi')
 @section('subtitle', 'Menu Belum Diverifikasi')
+@push('css')
+@endpush
 
 @section('content')
 
@@ -108,5 +110,4 @@
         @push('script')
         @endpush
 
-        @push('css')
-        @endpush
+   

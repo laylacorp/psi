@@ -5,6 +5,8 @@
 
 <head>
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 
     <!--[if lt IE 10]>
@@ -46,6 +48,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}//files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}//files/assets/pages/data-table/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}//files/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
+ 
 
     @stack('css')
 </head>
@@ -375,17 +379,7 @@
                                         <ul class="pcoded-submenu">
                                             <li class>
                                                 <a href="/belum_diverifikasi" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Profil</span>
-                                                </a>
-                                            </li>
-                                            <li class>
-                                                <a href="/belum_diverifikasi" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Pengguna</span>
-                                                </a>
-                                            </li>
-                                            <li class>
-                                                <a href="default/breadcrumb.html" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Kategori Job</span>
                                                 </a>
                                             </li>
                                             <li class>
@@ -394,7 +388,18 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/breadcrumb.html" class="waves-effect waves-dark">
+                                                <a href="/negara" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Negara</span>
+                                                </a>
+                                            </li>
+                                            <li class>
+                                                <a href="/kategori_job" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Kategori Job</span>
+                                                </a>
+                                            </li>
+                                           
+                                            <li class>
+                                                <a href="/job" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Job</span>
                                                 </a>
                                             </li>
@@ -552,8 +557,7 @@
 
 
  
-
-    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('template') }}/files/bower_components/jquery-ui/js/jquery-ui.min.js">
     </script>
@@ -580,21 +584,24 @@
 
     <script src="{{ asset('template') }}/files/assets/js/pcoded.min.js"></script>
     <script src="{{ asset('template') }}/files/assets/js/vertical/vertical-layout.min.js"></script>
-    <script type="text/javascript" src="{{ asset('template') }}/files/assets/pages/dashboard/custom-dashboard.min.js">
-    </script>
     <script type="text/javascript" src="{{ asset('template') }}/files/assets/js/script.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="{{ asset('template') }}//files/assets/pages/data-table/js/jszip.min.js"></script>
-    <script src="{{ asset('template') }}//files/assets/pages/data-table/js/pdfmake.min.js"></script>
-    <script src="{{ asset('template') }}//files/assets/pages/data-table/js/vfs_fonts.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('template') }}//files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('template') }}/files/assets/pages/data-table/js/jszip.min.js"></script>
+    <script src="{{ asset('template') }}/files/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script src="{{ asset('template') }}/files/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('template') }}/files/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-    <script src="{{ asset('template') }}//files/assets/pages/data-table/js/data-table-custom.js"></script>
+    <script src="{{ asset('template') }}/files/assets/pages/data-table/js/data-table-custom.js"></script>
+
+
+      
+
+
 
     @stack('script')
 </body>
