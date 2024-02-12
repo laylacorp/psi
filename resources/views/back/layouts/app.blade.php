@@ -404,32 +404,32 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/slider" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Slider</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/galeri" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Galeri</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/review" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Review</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/faq" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">FAQ</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/alasan" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Alasan</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/step" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Step</span>
                                                 </a>
                                             </li>
