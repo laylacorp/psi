@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\AlasanController;
 use App\Http\Controllers\BelumDiverifikasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\KategoriJobController;
+use App\Http\Controllers\LogHistoriController;
 use App\Http\Controllers\NegaraController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\StepController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,3 +85,22 @@ Route::get('/faq', [FaqController::class, 'index']);
 Route::resource('faq', FaqController::class);
 Route::get('/faq/{id}/edit', [FaqController::class, 'edit']);
 Route::put('/faq/{id}', [FaqController::class, 'update']);
+
+
+
+// Alasan
+Route::get('/alasan', [AlasanController::class, 'index']);
+Route::resource('alasan', AlasanController::class);
+Route::get('/alasan/{id}/edit', [AlasanController::class, 'edit']);
+Route::put('/alasan/{id}', [FaqController::class, 'update']);
+
+
+// Log Histori
+Route::get('/log_histori', [LogHistoriController::class, 'index'])->name('log_histori');
+Route::get('/log-histori/delete-all', [LogHistoriController::class, 'deleteAll'])->name('log-histori.delete-all');
+
+// Step
+Route::get('/step', [StepController::class, 'index']);
+Route::resource('step', StepController::class);
+Route::get('/step/{id}/edit', [StepController::class, 'edit']);
+Route::put('/step/update/{id}', [StepController::class, 'update'])->name('step.update');

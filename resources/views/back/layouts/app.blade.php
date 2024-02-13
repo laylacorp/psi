@@ -530,6 +530,14 @@
                                 </ul>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class>
+                                        <a href="/log_histori" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-message-circle"></i></span>
+                                            <span class="pcoded-mtext">Log Histori</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pcoded-item pcoded-left-item">
+                                    <li class>
                                         <a href="default/navbar-light.html" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-log-out"></i></span>
                                             <span class="pcoded-mtext">Logout</span>
