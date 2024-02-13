@@ -20,5 +20,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/admin', [DashboardController::class, 'index']);
 Route::get('/belum_diverifikasi', [BelumDiverifikasiController::class, 'index']);
+
+// Admin Route
+require __DIR__ . '/admin.php';
+
+// Frontend Route
+require __DIR__ . '/home.php';
