@@ -11,6 +11,18 @@
     .card-sub:hover {
         transform: scale(1.05);
     }
+
+    .card-img-container {
+        overflow: hidden;
+        height: 200px; /* Sesuaikan dengan tinggi yang diinginkan */
+    }
+
+    .card-img-container img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center; /* Atur posisi gambar agar tetap di tengah */
+        height: 100%;
+    }
 </style>
 
 @section('content')
@@ -76,10 +88,19 @@
                                             @foreach ($belum_diverifikasi as $p)
                                                 <div class="col-lg-12 col-xl-3">
                                                     <div class="card-sub shadow p-3 mb-5 bg-white rounded">
-                                                        <a href="/upload/foto/{{ $p->foto }}" target="_blank">
-                                                            <img class="card-img-top img-fluid"
-                                                                src="/upload/foto/{{ $p->foto }}" alt="Card image cap">
-                                                        </a>
+                                                        <div class="card-img-container">
+                                                            @if ($p->foto)
+                                                                <a href="/upload/foto/{{ $p->foto }}" target="_blank">
+                                                                    <img class="card-img-top img-fluid"
+                                                                        src="/upload/foto/{{ $p->foto }}"
+                                                                        alt="Card image cap">
+                                                                </a>
+                                                            @else
+                                                                <!-- Foto default jika tidak ada foto -->
+                                                                <img class="card-img-top img-fluid" src="/upload/foto/foto.png"
+                                                                    alt="Default Image">
+                                                            @endif
+                                                        </div>
 
                                                         <div class="card-block">
                                                             <h5 class="card-title">
@@ -105,9 +126,9 @@
 
                                                             <div class="text-left">
                                                                 <!-- Icon mata untuk detail -->
-                                                                <a href="{{ route('belum_diverifikasi.detail',$p->id)}}" class="" title="Detail">
-                                                                    <span class="badge badge-primary"
-                                                                        title="Lihat Detail">
+                                                                <a href="{{ route('belum_diverifikasi.detail', $p->id) }}"
+                                                                    class="" title="Detail">
+                                                                    <span class="badge badge-primary" title="Lihat Detail">
                                                                         <i class="fa fa-eye"></i>
                                                                         Lihat Detail
                                                                     </span>
