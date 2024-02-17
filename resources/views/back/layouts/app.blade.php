@@ -67,7 +67,7 @@
             <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
                     <div class="navbar-logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img class="img-fluid" src="{{ asset('template') }}/files/assets/images/logo.png"
                                 alt="Theme-Logo" />
                         </a>
@@ -174,27 +174,17 @@
                                     <ul class="show-notification profile-notification dropdown-menu"
                                         data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         <li>
-                                            <a href="#!">
+                                            <a href="/pengaturan">
                                                 <i class="feather icon-settings"></i> Settings
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="/profil">
                                                 <i class="feather icon-user"></i> Profile
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="email-inbox.html">
-                                                <i class="feather icon-mail"></i> My Messages
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-lock-screen.html">
-                                                <i class="feather icon-lock"></i> Lock Screen
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-sign-in-social.html">
+                                            <a href="/logout">
                                                 <i class="feather icon-log-out"></i> Logout
                                             </a>
                                         </li>
@@ -361,7 +351,7 @@
                                 
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class>
-                                        <a href="default/navbar-light.html" class="waves-effect waves-dark">
+                                        <a href="/" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                             <span class="pcoded-mtext">Dashboard</span>
                                         </a>
@@ -383,7 +373,7 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/breadcrumb.html" class="waves-effect waves-dark">
+                                                <a href="/company" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Company</span>
                                                 </a>
                                             </li>
@@ -434,7 +424,7 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/other" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Lainnya</span>
                                                 </a>
                                             </li>
@@ -455,12 +445,12 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/breadcrumb.html" class="waves-effect waves-dark">
+                                                <a href="/verifikasi" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Sudah Diverifikasi</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="default/button.html" class="waves-effect waves-dark">
+                                                <a href="/reject" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Reject</span>
                                                 </a>
                                             </li>
@@ -522,7 +512,7 @@
                                 <div class="pcoded-navigation-label">Setting</div>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class>
-                                        <a href="default/navbar-light.html" class="waves-effect waves-dark">
+                                        <a href="/pengaturan" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-settings"></i></span>
                                             <span class="pcoded-mtext">Pengaturan Umum</span>
                                         </a>
@@ -538,7 +528,7 @@
                                 </ul>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class>
-                                        <a href="default/navbar-light.html" class="waves-effect waves-dark">
+                                        <a href="/logout" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-log-out"></i></span>
                                             <span class="pcoded-mtext">Logout</span>
                                         </a>

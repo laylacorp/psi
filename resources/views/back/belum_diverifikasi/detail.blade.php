@@ -1,6 +1,6 @@
 @extends('back.layouts.app')
-@section('title', 'Halaman Job')
-@section('subtitle', 'Menu Job')
+@section('title', 'Halaman Detail Pendaftaran Belum Verifikasi')
+@section('subtitle', 'Menu Detail Pendaftaran Belum Verifikasi')
 @push('css')
     {{-- <link rel="stylesheet" href="{{ asset('template') }}/files/bower_components/select2/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/files/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" />
@@ -28,8 +28,8 @@
                     <div class="page-header-title">
                         <i class="feather icon-list bg-c-blue"></i>
                         <div class="d-inline">
-                            <h5>Job</h5>
-                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            <h5>Detail Pendaftaran Belum Verifikasi</h5>
+                            <span>Silahkan isi dengan data yang sesuai dan valid !</span>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/"><i class="feather icon-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#!">Halaman Job</a>
+                            <li class="breadcrumb-item"><a href="#!">Halaman Detail Pendaftaran Belum Verifikasi</a>
                             </li>
 
                         </ul>
@@ -60,7 +60,7 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Data Job</h5>
+                                        <h5>Data Detail Pendaftaran Belum Verifikasi : {{ $belum_diverifikasi->nama_lengkap }}</h5>
 
                                     </div>
                                     <div class="card-block">
@@ -109,7 +109,9 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-6">
                                                                                         <label class="col-form-label"
-                                                                                            for="nama_job">Nama Job</label>
+                                                                                            for="nama_job">Nama Detail
+                                                                                            Pendaftaran Belum
+                                                                                            Verifikasi</label>
                                                                                         <input type="text"
                                                                                             class="form-control form-control-success"
                                                                                             id="nama_job" name="nama_job">
@@ -226,10 +228,16 @@
                                                                                         <label class="col-form-label"
                                                                                             for="negara_id">Negara</label>
 
-                                                                                            <select id="negara_id" name="negara_id" class="form-control">
-                                                                                                <option value="" data-nama-negara="">Pilih Negara</option>
-                                                                                            </select>
-                                                                                            <input type="hidden" id="nama_negara" name="nama_negara">
+                                                                                        <select id="negara_id"
+                                                                                            name="negara_id"
+                                                                                            class="form-control">
+                                                                                            <option value=""
+                                                                                                data-nama-negara="">Pilih
+                                                                                                Negara</option>
+                                                                                        </select>
+                                                                                        <input type="hidden"
+                                                                                            id="nama_negara"
+                                                                                            name="nama_negara">
                                                                                     </div>
                                                                                     <div class="col-sm-6">
                                                                                         <label class="col-form-label"
@@ -681,7 +689,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="/job"
+                                                                <a href="/belum_diverifikasi"
                                                                     class="btn btn-warning waves-effect waves-light mt-3"><i
                                                                         class="fas fa-undo"></i>
                                                                     Kembali
@@ -689,8 +697,13 @@
 
                                                                 <button type="button"
                                                                     class="btn btn-primary waves-effect waves-light mt-3"
-                                                                    id="btn-save-job" style="float: right;">
-                                                                    <i class="fas fa-save"></i> Simpan
+                                                                    id="btn-verifikasi" style="float: right;">
+                                                                    <i class="fas fa-save"></i> Verifikasi
+                                                                </button>
+                                                                <button type="button"
+                                                                    class="btn btn-danger waves-effect waves-light mt-3 m-3"
+                                                                    id="btn-reject" style="float: right;">
+                                                                    <i class="fas fa-ban"></i>Reject
                                                                 </button>
 
 
@@ -738,233 +751,4 @@
 
                 <script type="text/javascript"
                     src="{{ asset('template') }}/files/bower_components/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
-
-
-                {{-- PERINTAH CARI NEGARA --}}
-                <script>
-                    $(document).ready(function() {
-                        $.ajax({
-                            url: '{{ route('getNegara') }}',
-                            type: 'GET',
-                            success: function(data) {
-                                var options = '';
-                                data.forEach(function(negara) {
-                                    options += '<option value="' + negara.id + '" data-nama-negara="' +
-                                        negara.nama_negara + '">' +
-                                        negara.nama_negara + '</option>';
-                                });
-                                $('#negara_id').append(options);
-                            }
-                        });
-
-                        // Event saat nilai dropdown negara diubah
-                        $('#negara_id').change(function() {
-                            var selectedOption = $(this).find('option:selected');
-                            var namaNegara = selectedOption.data('nama-negara');
-                            $('#nama_negara').val(namaNegara);
-                        });
-                    });
-                </script>
-
-
-                <script>
-                    $(document).ready(function() {
-                        $.ajax({
-                            url: '{{ route('getKategoriJob') }}',
-                            type: 'GET',
-                            success: function(response) {
-                                console.log(response);
-                                var options = '';
-                                response.forEach(function(kategori_job) {
-                                    options += '<option value="' + kategori_job.id + '">' + kategori_job
-                                        .nama_kategori_job + '</option>';
-                                });
-                                $('#kategori_job_id').append(options);
-                            }
-
-                        });
-
-
-
-                    });
-                </script>
-
-
-                {{-- <script>
-                $(document).ready(function() {
-                    $.ajax({
-                        url: '{{ route('getKategoriJob') }}',
-                        type: 'GET',
-                        success: function(response) {
-                            var kategoriJobList = response.kategoriJobList;
-                            var options = '';
-
-                            options += '<option value="">Pilih Industri Pekerjaan</option>';
-
-                            $.each(kategoriJobList, function(id, nama_kategori_job) {
-                                options += '<option value="' + id + '">' + nama_kategori_job +
-                                    '</option>';
-                            });
-
-                            $('#kategori_job_id').html(options);
-                        },
-                        error: function(error) {
-                            console.error("Error fetching kategori job data:", error);
-                        }
-                    });
-                });
-            </script> --}}
-
-
-
-
-
-                {{-- TAMBAH --}}
-                <script>
-                    $(document).ready(function() {
-                        $('#btn-save-job').click(function() {
-                            var form = $('#form_job');
-                            $.ajax({
-                                url: form.attr('action'),
-                                type: 'POST',
-                                data: form.serialize(),
-                                success: function(response) {
-
-                                    Swal.fire({
-                                        title: 'Sukses!',
-                                        text: response.message,
-                                        icon: 'success',
-                                        confirmButtonText: 'OK'
-                                    }).then(function() {
-                                        location.reload();
-                                    });
-                                },
-                                error: function(xhr) {
-                                    var errorMessages = xhr.responseJSON.errors;
-                                    var errorMessage = '';
-                                    $.each(errorMessages, function(key, value) {
-                                        errorMessage += value + '<br>';
-                                    });
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        html: errorMessage,
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    });
-                                }
-                            });
-                        });
-                    });
-                </script>
-
-                {{-- EDIT dan UPDATE --}}
-                <script>
-                    $(document).ready(function() {
-                        // Tampilkan data di modal edit
-                        $('.btn-edit').click(function() {
-                            var id = $(this).data('id');
-                            $.ajax({
-                                url: '/job/' + id + '/edit',
-                                type: 'GET',
-                                success: function(response) {
-                                    $('#edit_nama_job').val(response.nama_job);
-                                    $('#edit_urutan').val(response.urutan);
-                                    // Set action form untuk update
-                                    $('#form-edit-kategori-job').attr('action', '/job/' + id);
-                                    $('#modal-edit').modal('show');
-                                },
-                                error: function(xhr) {
-                                    // Handle error
-                                }
-                            });
-                        });
-
-                        // AJAX untuk update data
-                        $('#btn-update-kategori-job').click(function() {
-                            var form = $('#form-edit-kategori-job');
-                            $.ajax({
-                                url: form.attr('action'),
-                                type: 'POST',
-                                data: form.serialize() + '&_method=PUT',
-                                success: function(response) {
-                                    $('#modal-edit').modal('hide');
-                                    Swal.fire({
-                                        title: 'Sukses!',
-                                        text: response.message,
-                                        icon: 'success',
-                                        confirmButtonText: 'OK'
-                                    }).then(function() {
-                                        location.reload();
-                                    });
-                                },
-                                error: function(xhr) {
-                                    var errorMessages = xhr.responseJSON.errors;
-                                    var errorMessage = '';
-                                    $.each(errorMessages, function(key, value) {
-                                        errorMessage += value + '<br>';
-                                    });
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        html: errorMessage,
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    });
-                                }
-                            });
-                        });
-                    });
-                </script>
-
-                {{-- DELET --}}
-                <script>
-                    $(document).ready(function() {
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-
-                        $('.btn-hapus').click(function() {
-                            var id = $(this).data('id');
-
-                            Swal.fire({
-                                title: 'Apakah Anda yakin?',
-                                text: 'Data akan dihapus permanen!',
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Ya, hapus!',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    $.ajax({
-
-                                        url: '/job/' + id,
-                                        type: 'DELETE',
-
-                                        success: function(response) {
-                                            Swal.fire({
-                                                title: 'Sukses!',
-                                                text: response.message,
-                                                icon: 'success',
-                                                confirmButtonText: 'OK',
-                                            }).then(function() {
-                                                location.reload();
-                                            });
-                                        },
-                                        error: function(xhr) {
-                                            // Handle error
-                                            Swal.fire({
-                                                title: 'Error!',
-                                                text: 'Gagal menghapus data.',
-                                                icon: 'error',
-                                                confirmButtonText: 'OK',
-                                            });
-                                        },
-                                    });
-                                }
-                            });
-                        });
-                    });
-                </script>
             @endpush

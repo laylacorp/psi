@@ -521,4 +521,4 @@
                 </div>
             </div>
         </div>
-    < @endsection
+@endsection

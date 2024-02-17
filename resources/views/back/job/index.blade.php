@@ -20,7 +20,7 @@
                         <i class="feather icon-list bg-c-blue"></i>
                         <div class="d-inline">
                             <h5>Job</h5>
-                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            <span>Silahkan isi dengan data yang sesuai dan valid !</span>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,8 @@
 
                                     </div>
                                     <div class="card-block">
-                                        <a href="/job/create" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Data</a>
+                                        <a href="/job/create" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add
+                                            Data</a>
 
                                         <br><br>
 
@@ -77,6 +78,15 @@
                                                             <td>{{ $p->nama_job }}</td>
                                                             <td>{{ $p->nama_negara }}</td>
                                                             <td class="text-center">
+                                                                <a style="color: rgb(242, 236, 236)" href="#"
+                                                                    class="btn btn-sm btn-secondary btn-gambar"
+                                                                    data-toggle="modal" data-target="#modal-gambar"
+                                                                    data-id="{{ $p->id }}"
+                                                                    data-nama-job="{{ $p->nama_job }}"
+                                                                    style="color: black">
+                                                                    <i class="fas fa-image"></i> Gambar
+                                                                </a>
+
                                                                 <a style="color: rgb(242, 236, 236)" href="#"
                                                                     class="btn btn-sm btn-primary btn-edit"
                                                                     data-toggle="modal" data-target="#modal-edit"
@@ -108,7 +118,46 @@
                 </div>
             </div>
 
-         
+
+            {{-- Modal Upload Gambar --}}
+            <div class="modal fade" id="modal-gambar" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <form id="form-gambar" action="{{ route('upload-gambar') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Tambah Gambar untuk Job: <span id="nama-job-info"></span></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Input Nama Gambar dan File -->
+                                <div class="form-group">
+                                    <label for="nama_gambar">Nama Gambar</label>
+                                    <input type="text" class="form-control" id="nama_gambar" name="nama_gambar" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gambar">Gambar</label>
+                                    <input type="file" class="form-control-file" id="gambar" name="gambar" required>
+                                </div>
+
+                                <!-- Input Hidden untuk Menyimpan ID Job -->
+                                <input type="hidden" id="job_id" name="job_id">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                                <button type="button" id="btn-simpan-gambar" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
 
         @endsection
 
@@ -116,46 +165,42 @@
 
 
         @push('script')
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-            {{-- EDIT dan UPDATE --}}
+
             <script>
                 $(document).ready(function() {
-                    // Tampilkan data di modal edit
-                    $('.btn-edit').click(function() {
-                        var id = $(this).data('id');
-                        $.ajax({
-                            url: '/job/' + id + '/edit',
-                            type: 'GET',
-                            success: function(response) {
-                                $('#edit_nama_job').val(response.nama_job);
-                                $('#edit_urutan').val(response.urutan);
-                                // Set action form untuk update
-                                $('#form-edit-kategori-job').attr('action', '/job/' + id);
-                                $('#modal-edit').modal('show');
-                            },
-                            error: function(xhr) {
-                                // Handle error
-                            }
-                        });
+                    var namaJob; // Deklarasikan variabel di luar event
+
+                    // Event klik tombol gambar
+                    $('.btn-gambar').on('click', function() {
+                        var job_id = $(this).data('id');
+                        namaJob = $(this).closest('tr').find('td:eq(1)')
+                    .text(); // Mendapatkan nama_job dari kolom kedua
+                        $('#job_id').val(job_id);
+                        $('#nama-job-info').text(namaJob);
+                        $('#modal-gambar').modal('show');
                     });
 
-                    // AJAX untuk update data
-                    $('#btn-update-kategori-job').click(function() {
-                        var form = $('#form-edit-kategori-job');
+                    // Event klik tombol upload gambar
+                    $('#btn-simpan-gambar').on('click', function() {
+                        var formData = new FormData($('#form-gambar')[0]);
+
                         $.ajax({
-                            url: form.attr('action'),
+                            url: '{{ route('upload-gambar') }}',
                             type: 'POST',
-                            data: form.serialize() + '&_method=PUT',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
                             success: function(response) {
-                                $('#modal-edit').modal('hide');
                                 Swal.fire({
                                     title: 'Sukses!',
-                                    text: response.message,
+                                    html: 'Data berhasil disimpan untuk Job: <strong>' +
+                                        namaJob + '</strong>',
                                     icon: 'success',
                                     confirmButtonText: 'OK'
                                 }).then(function() {
+                                    $('#modal-gambar').modal('hide');
                                     location.reload();
                                 });
                             },
@@ -177,7 +222,6 @@
                 });
             </script>
 
-            {{-- DELET --}}
             <script>
                 $(document).ready(function() {
                     $.ajaxSetup({

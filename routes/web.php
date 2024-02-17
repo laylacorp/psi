@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlasanController;
-use App\Http\Controllers\BelumDiverifikasiController;
+use App\Http\Controllers\BelumVerifikasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GaleriController;
@@ -12,6 +12,9 @@ use App\Http\Controllers\NegaraController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StepController;
+
+
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +34,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/belum_diverifikasi', [BelumDiverifikasiController::class, 'index']);
+Route::get('/belum_diverifikasi', [BelumVerifikasiController::class, 'index']);
+Route::post('/update-status', [BelumVerifikasiController::class, 'updateStatus'])->name('update.status'); 
+Route::get('/belum_diverifikasi/{id}/detail', [BelumVerifikasiController::class, 'detail'])->name('belum_diverifikasi.detail');
 
 
 // Kategori Job
@@ -50,6 +55,9 @@ Route::get('/getNegara', [JobController::class, 'getList'])->name('getNegara');
 Route::get('/getKategoriJob', [JobController::class, 'getKategoriJobList'])->name('getKategoriJob');
 // web.php atau file rute lainnya
 // Route::get('/getKategoriJob', [JobController::class, 'getKategoriJob'])->name('getKategoriJob');
+
+Route::post('/upload-gambar', [JobController::class, 'uploadGambar'])->name('upload-gambar'); 
+
 
 
 // Negara
@@ -104,3 +112,8 @@ Route::get('/step', [StepController::class, 'index']);
 Route::resource('step', StepController::class);
 Route::get('/step/{id}/edit', [StepController::class, 'edit']);
 Route::put('/step/update/{id}', [StepController::class, 'update'])->name('step.update');
+
+
+
+
+Route::get('/home', [HomeController::class, 'index']);

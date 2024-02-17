@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
+use App\Models\Pendaftaran;
 use App\Models\LogHistori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class FaqController extends Controller
+class SudahVerifikasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     private function simpanLogHistori($aksi, $tabelAsal, $idEntitas, $pengguna, $dataLama, $dataBaru)
     {
         $log = new LogHistori();
@@ -30,9 +31,34 @@ class FaqController extends Controller
 
     public function index()
     {
-        $faq = Faq::orderBy('id', 'desc')->get();
-        return view('back.faq.index', compact('faq'));
+        $sudah_diverifikasi = Pendaftaran::where('status', 'Verifikasi')->orderBy('id', 'desc')->get();
+        return view('back.sudah_diverifikasi.index', compact('sudah_diverifikasi'));
     }
+ 
+
+
+    public function updateStatus(Request $request)
+    {
+        $pendaftaranId = $request->input('pendaftaran_id');
+        $status = $request->input('status');
+
+        // Get the original data before the update
+        $sudah_diverifikasi = Pendaftaran::findOrFail($pendaftaranId);
+        $oldData = $sudah_diverifikasi->getOriginal();
+
+        // Update the status in the database
+        Pendaftaran::where('id', $pendaftaranId)->update(['status' => $status]);
+
+        // Get the updated data after the update
+        $updatedData = Pendaftaran::findOrFail($pendaftaranId)->getOriginal();
+
+        // Log the histori
+        $loggedInUserId = Auth::id();
+        $this->simpanLogHistori('Update', 'Pendaftaran', $pendaftaranId, $loggedInUserId, json_encode($oldData), json_encode($updatedData));
+
+        return response()->json(['message' => 'Status updated successfully']);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,10 +80,10 @@ class FaqController extends Controller
     {
         // Validasi request
         $validator = Validator::make($request->all(), [
-            'pertanyaan' => 'required|unique:faq,pertanyaan',
+            'pertanyaan' => 'required|unique:sudah_diverifikasi,pertanyaan',
         ], [
-            'pertanyaan.required' => 'Nama Faq Wajib diisi',
-            'pertanyaan.unique' => 'Nama Faq sudah digunakan',
+            'pertanyaan.required' => 'Nama SudahVerifikasi Wajib diisi',
+            'pertanyaan.unique' => 'Nama SudahVerifikasi sudah digunakan',
         ]);
 
 
@@ -68,14 +94,14 @@ class FaqController extends Controller
         $input = $request->all();
 
         // Simpan data spp ke database menggunakan fill()
-        $faq = new Faq();
-        $faq->fill($input);
-        $faq->save();
+        $sudah_diverifikasi = new Pendaftaran();
+        $sudah_diverifikasi->fill($input);
+        $sudah_diverifikasi->save();
 
         $loggedInUserId = Auth::id();
 
         // Simpan log histori untuk operasi Create dengan user_id yang sedang login
-        $this->simpanLogHistori('Create', 'Faq', $faq->id, $loggedInUserId, null, json_encode($faq));
+        $this->simpanLogHistori('Create', 'SudahVerifikasi', $sudah_diverifikasi->id, $loggedInUserId, null, json_encode($sudah_diverifikasi));
 
 
         return response()->json(['message' => 'Data Berhasil Disimpan']);
@@ -100,8 +126,8 @@ class FaqController extends Controller
      */
     public function edit($id)
     {
-        $faq = Faq::findOrFail($id);
-        return response()->json($faq);
+        $sudah_diverifikasi = Pendaftaran::findOrFail($id);
+        return response()->json($sudah_diverifikasi);
     }
 
     /**
@@ -116,22 +142,22 @@ class FaqController extends Controller
         $validator = Validator::make($request->all(), [
             'pertanyaan' => 'required',
         ], [
-            'pertanyaan.required' => 'Nama Faq Wajib diisi',
+            'pertanyaan.required' => 'Nama SudahVerifikasi Wajib diisi',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $faq = Faq::findOrFail($id);
-        $oldData = $faq->getOriginal();
+        $sudah_diverifikasi = Pendaftaran::findOrFail($id);
+        $oldData = $sudah_diverifikasi->getOriginal();
 
         $input = $request->all();
-        $faq->update($input);
+        $sudah_diverifikasi->update($input);
 
 
         $loggedInUserId = Auth::id();
-        $this->simpanLogHistori('Update', 'Faq', $faq->id, $loggedInUserId, json_encode($oldData), json_encode($faq));
+        $this->simpanLogHistori('Update', 'SudahVerifikasi', $sudah_diverifikasi->id, $loggedInUserId, json_encode($oldData), json_encode($sudah_diverifikasi));
 
         return response()->json(['message' => 'Data berhasil diupdate.']);
     }
@@ -144,28 +170,16 @@ class FaqController extends Controller
      */
     public function destroy($id)
     {
-        $faq = Faq::findOrFail($id);
+        $sudah_diverifikasi = Pendaftaran::findOrFail($id);
 
-        if (!$faq) {
-            return response()->json(['message' => 'Data Faq not found'], 404);
+        if (!$sudah_diverifikasi) {
+            return response()->json(['message' => 'Data SudahVerifikasi not found'], 404);
         }
 
-        $faq->delete();
+        $sudah_diverifikasi->delete();
         $loggedInUserId = Auth::id();
-        $this->simpanLogHistori('Delete', 'Faq', $id, $loggedInUserId, json_encode($faq), null);
+        $this->simpanLogHistori('Delete', 'SudahVerifikasi', $id, $loggedInUserId, json_encode($sudah_diverifikasi), null);
 
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
-
-
-
-
- 
-
-
-
-
-
-
-
 }

@@ -16,7 +16,7 @@
                         <i class="feather icon-list bg-c-blue"></i>
                         <div class="d-inline">
                             <h5>Review</h5>
-                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            <span>Silahkan isi dengan data yang sesuai dan valid !</span>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Benefit;
 use App\Models\Galeri;
+use App\Models\Gambar;
 use App\Models\Job;
 use App\Models\KategoriJob;
 use App\Models\LogHistori;
@@ -11,6 +12,7 @@ use App\Models\Negara;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller
@@ -127,50 +129,79 @@ class JobController extends Controller
         $request->validate([
             'nama_job' => 'required',
             'nama_benefit' => 'required|array|min:1',
-
-            
+            'negara_id' => 'required|exists:negara,id',
         ]);
-    
-      
-    
+
+        // Dapatkan nama_negara dari input hidden
+        $namaNegara = $request->input('nama_negara');
+
         // Mulai transaksi database
         DB::beginTransaction();
-    
-        try {
-            // Simpan ke dalam tabel penempatan_kelas_head
-            // $job = Job::create([
-            //     'nama_job' => $request->nama_job,
-            // ]);
-             $job = Job::create($request->all());
-    
-            // Simpan ke dalam tabel penempatan_kelas_detail untuk setiap siswa yang dipilih
-            foreach ($request->nama_benefit as $benefit) {
 
+        try {
+            // Simpan ke dalam tabel job
+            $job = Job::create([
+                'nama_job' => $request->nama_job,
+                'negara_id' => $request->negara_id,
+                'nama_negara' => $namaNegara,
+            ]);
+
+            // Simpan ke dalam tabel benefit
+            foreach ($request->nama_benefit as $benefit) {
                 Benefit::create([
                     'job_id' => $job->id,
                     'nama_benefit' => $benefit,
                 ]);
             }
-    
+
             // Commit transaksi jika tidak ada kesalahan
             DB::commit();
 
-                     // Mendapatkan ID pengguna yang sedang login
-        $loggedInUserId = Auth::id();
+            // Mendapatkan ID pengguna yang sedang login
+            $loggedInUserId = Auth::id();
 
-        // Simpan log histori untuk operasi Create dengan ruangan_id yang sedang login
-        $this->simpanLogHistori('Create', 'Job', $job->id, $loggedInUserId, null, json_encode($job));
+            // Simpan log histori untuk operasi Create dengan ruangan_id yang sedang login
+            $this->simpanLogHistori('Create', 'Job', $job->id, $loggedInUserId, null, json_encode($job));
 
-    
             return response()->json(['message' => 'Data berhasil disimpan'], 200);
         } catch (\Exception $e) {
             // Rollback transaksi jika terjadi kesalahan
             DB::rollback();
-    
+
             return response()->json(['message' => 'Terjadi kesalahan saat menyimpan data'], 500);
         }
     }
-    
+
+
+
+    public function uploadGambar(Request $request)
+    {
+        $request->validate([
+            'job_id' => 'required|exists:job,id',
+            'nama_gambar' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $gambar = $request->file('gambar');
+        $nama_gambar = $request->nama_gambar;
+        $job_id = $request->job_id;
+
+        // Simpan gambar di dalam direktori 'public/upload/galeri/'
+        $destinationPath = 'upload/gambar/';
+        $imageName = time() . '_' . $gambar->getClientOriginalName();
+        $gambar->move(public_path($destinationPath), $imageName);
+
+
+        // Simpan informasi gambar ke tabel gambar
+        Gambar::create([
+            'job_id' => $job_id,
+            'nama_gambar' => $nama_gambar,
+            'gambar' => $imageName,
+        ]);
+
+        return response()->json(['message' => 'Gambar berhasil diupload'], 200);
+    }
+
 
 
 
@@ -243,18 +274,29 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        $kategoriJob = Job::findOrFail($id);
+        // Hapus data pada tabel benefit
+        Benefit::where('job_id', $id)->delete();
 
-        if (!$kategoriJob) {
-            return response()->json(['message' => 'Data Job not found'], 404);
+        // Hapus data pada tabel gambar
+        Gambar::where('job_id', $id)->delete();
+
+        // Hapus file gambar pada folder public/upload/gambar/
+        $gambar = Gambar::where('job_id', $id)->pluck('gambar')->first();
+        if ($gambar) {
+            $gambarPath = public_path($gambar);
+
+            // Pastikan file ada sebelum dihapus
+            if (file_exists($gambarPath)) {
+                unlink($gambarPath);
+            }
         }
 
-        $kategoriJob->delete();
-        $loggedInUserId = Auth::id();
-        $this->simpanLogHistori('Delete', 'Job', $id, $loggedInUserId, json_encode($kategoriJob), null);
+        // Hapus data pada tabel job
+        Job::destroy($id);
 
-        return response()->json(['message' => 'Data berhasil dihapus.']);
+        return response()->json(['message' => 'Job berhasil dihapus beserta benefit dan gambar terkait'], 200);
     }
+
 
     public function getList()
     {
