@@ -2,27 +2,29 @@
 @section('title', 'Halaman Belum Diverifikasi')
 @section('subtitle', 'Menu Belum Diverifikasi')
 @push('css')
-<style>
-    .card-sub {
-        transition: transform 0.2s ease-in-out;
-    }
+    <style>
+        .card-sub {
+            transition: transform 0.2s ease-in-out;
+        }
 
-    .card-sub:hover {
-        transform: scale(1.05);
-    }
+        .card-sub:hover {
+            transform: scale(1.05);
+        }
 
-    .card-img-container {
-        overflow: hidden;
-        height: 200px; /* Sesuaikan dengan tinggi yang diinginkan */
-    }
+        .card-img-container {
+            overflow: hidden;
+            height: 200px;
+            /* Sesuaikan dengan tinggi yang diinginkan */
+        }
 
-    .card-img-container img {
-        width: 100%;
-        object-fit: cover;
-        object-position: center; /* Atur posisi gambar agar tetap di tengah */
-        height: 100%;
-    }
-</style>
+        .card-img-container img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            /* Atur posisi gambar agar tetap di tengah */
+            height: 100%;
+        }
+    </style>
 @endpush
 
 
@@ -77,13 +79,15 @@
                                             <!-- Add this inside your HTML body -->
                                             <div class="search-container">
                                                 <div style="display: inline-block;">
-                                                    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+                                                    <input type="text" class="form-control" id="searchInput"
+                                                        placeholder="Search...">
                                                 </div>
                                                 <div style="display: inline-block;">
-                                                    <button class="btn btn-primary waves-effect waves-light" onclick="searchCards()">Search</button>
+                                                    <button class="btn btn-primary waves-effect waves-light"
+                                                        onclick="searchCards()">Search</button>
                                                 </div>
                                             </div>
-                                            
+
                                             <br><br>
                                         </div>
 
@@ -94,32 +98,32 @@
                                                         <div class="card-img-container">
                                                             @if ($p->foto)
                                                                 <a href="/upload/foto/{{ $p->foto }}" target="_blank">
-                                                                    <img class="card-img-top img-fluid" 
+                                                                    <img class="card-img-top img-fluid"
                                                                         src="/upload/foto/{{ $p->foto }}"
                                                                         alt="Card image cap">
                                                                 </a>
                                                             @else
                                                                 <!-- Foto default jika tidak ada foto -->
-                                                                <img class="card-img-top img-fluid" src="/upload/foto/foto.png"
-                                                                    alt="Default Image">
+                                                                <img class="card-img-top img-fluid"
+                                                                    src="/upload/foto/foto.png" alt="Default Image">
                                                             @endif
                                                         </div>
 
                                                         <div class="card-block">
                                                             <h5 class="card-title">
-                                                                <span
-                                                                    class="badge badge-pill badge-warning"><i style="color: rgb(23, 22, 22)" class="fa fa-hourglass-half"></i> Pending</span>
-                                                            </h5>
-                                                            <h5 class="card-title">
                                                                 <b
-                                                                    style="font-weight: bold; color:rgb(73, 84, 160)">{{ $p->nama_lengkap }}</b> <i style="color: rgb(240, 228, 228)" class="fa fa-hourglass-half"></i>
-                                                            </h5> 
+                                                                    style="font-weight: bold; color:#00324F font-family: 'Poppins', sans-serif;" >{{ $p->nama_lengkap }}</b>
+                                                                
+                                                            </h5>
                                                             <p><b style="font-weight: bold;">Usia: {{ $p->usia }}
                                                                     Tahun</b></p>
-                                                            <p class="card-text">Domisili : {{ $p->alamat }}</p>
+                                                            <p class="card-text"
+                                                                style="font-family: 'Poppins', sans-serif;">Domisili :
+                                                                {{ $p->alamat }}</p>
+
                                                             <h5 class="card-title">
-                                                                <span
-                                                                    class="badge badge-pill badge-success">{{ $p->nama_kategori_job }}</span>
+                                                                <span class="badge badge-pill badge-warning"
+                                                                    style="color: #00324F;">{{ $p->nama_kategori_job }}</span>
                                                             </h5>
 
                                                             <div class="text-left">
@@ -133,22 +137,33 @@
 
                                                             <div class="text-left">
                                                                 <!-- Icon mata untuk detail -->
-                                                                <a href="{{ route('belum_diverifikasi.detail', $p->id) }}"
-                                                                    class="" title="Detail">
-                                                                    <span class="badge badge-primary" title="Lihat Detail">
-                                                                        <i class="fa fa-eye"></i>
-                                                                        Lihat Detail
-                                                                    </span>
-                                                                </a>
-                                                                <a href="#" class="ml-2" title="Status"
-                                                                    data-toggle="modal"
-                                                                    data-target="#ubahStatusModal{{ $p->id }}">
-                                                                    <span class="badge badge-warning ml-2"
-                                                                        title="Ubah Status">
+
+                                                                <div class="d-flex">
+                                                                    <a href="" data-toggle="modal"
+                                                                        data-target="#ubahStatusModal{{ $p->id }}"
+                                                                        class="form-control mr-2"
+                                                                        style="background-color: #00324F; color: #fff; border-radius: 1rem; font-size: 12px; "
+                                                                        title="Detail">
                                                                         <i class="fa fa-edit"></i>
                                                                         Ubah Status
-                                                                    </span>
-                                                                </a>
+
+                                                                    </a>
+                                                                    <a href="{{ route('belum_diverifikasi.detail', $p->id) }}"
+                                                                        class="form-control"
+                                                                        style="background-color: transparent; color: #00324F; border-radius: 1rem; font-size: 12px;  border: 1px solid #00324F;"
+                                                                        title="Detail">
+
+                                                                        <i class="fa fa-eye"></i>
+                                                                        Lihat Detail
+
+                                                                    </a>
+
+                                                                </div>
+
+
+
+
+
                                                             </div>
 
                                                         </div>
@@ -199,7 +214,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @empty
+                                            @empty
                                                 <div class="alert alert-warning" role="alert">
                                                     Ooops.... Data Kosong !
                                                 </div>
