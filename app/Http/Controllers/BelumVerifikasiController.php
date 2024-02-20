@@ -54,7 +54,7 @@ class BelumVerifikasiController extends Controller
 
         // Log the histori
         $loggedInUserId = Auth::id();
-        $this->simpanLogHistori('Update', 'Pendaftaran Disetujui', $pendaftaranId, $loggedInUserId, json_encode($oldData), json_encode($updatedData));
+        $this->simpanLogHistori('Update', 'Belum Verifikasi', $pendaftaranId, $loggedInUserId, json_encode($oldData), json_encode($updatedData));
 
         return response()->json(['message' => 'Status updated successfully']);
     }

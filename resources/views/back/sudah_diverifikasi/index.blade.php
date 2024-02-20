@@ -1,6 +1,6 @@
 @extends('back.layouts.app')
-@section('title', 'Halaman Belum Diverifikasi')
-@section('subtitle', 'Menu Belum Diverifikasi')
+@section('title', 'Halaman Sudah Diverifikasi')
+@section('subtitle', 'Menu Sudah Diverifikasi')
 @push('css')
 <style>
     .card-sub {
@@ -37,7 +37,7 @@
                     <div class="page-header-title">
                         <i class="feather icon-list bg-c-blue"></i>
                         <div class="d-inline">
-                            <h5>Belum Diverifikasi</h5>
+                            <h5>Sudah Diverifikasi</h5>
                             <span>Silahkan isi dengan data yang sesuai dan valid !</span>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/"><i class="feather icon-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#!">Halaman Belum Diverifikasi</a>
+                            <li class="breadcrumb-item"><a href="#!">Halaman Sudah Diverifikasi</a>
                             </li>
 
                         </ul>
@@ -68,7 +68,7 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Data Pendaftaran Kandidat Belum Verifikasi</h5>
+                                        <h5>Data Pendaftaran Kandidat Sudah Verifikasi</h5>
                                     </div>
 
 
@@ -76,25 +76,23 @@
                                         <div class="col-lg-12 col-xl-3">
                                             <!-- Add this inside your HTML body -->
                                             <div class="search-container">
-                                                <div style="display: inline-block;">
-                                                    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
-                                                </div>
-                                                <div style="display: inline-block;">
-                                                    <button class="btn btn-primary waves-effect waves-light" onclick="searchCards()">Search</button>
-                                                </div>
+                                                <input type="text" class="form-control" id="searchInput"
+                                                    placeholder="Search...">
+                                                <br>
+                                                <button class="btn btn-primary waves-effect waves-light"
+                                                    onclick="searchCards()">Search</button>
                                             </div>
-                                            
                                             <br><br>
                                         </div>
 
                                         <div class="row" id="draggablePanelList">
-                                            @forelse ($belum_diverifikasi as $p)
+                                            @forelse ($sudah_diverifikasi as $p)
                                                 <div class="col-lg-12 col-xl-3">
                                                     <div class="card-sub shadow p-3 mb-5 bg-white rounded">
                                                         <div class="card-img-container">
                                                             @if ($p->foto)
                                                                 <a href="/upload/foto/{{ $p->foto }}" target="_blank">
-                                                                    <img class="card-img-top img-fluid" 
+                                                                    <img class="card-img-top img-fluid"
                                                                         src="/upload/foto/{{ $p->foto }}"
                                                                         alt="Card image cap">
                                                                 </a>
@@ -107,13 +105,9 @@
 
                                                         <div class="card-block">
                                                             <h5 class="card-title">
-                                                                <span
-                                                                    class="badge badge-pill badge-warning"><i style="color: rgb(191, 14, 17)" class="fa fa-hourglass-half"></i> Pending</span>
-                                                            </h5>
-                                                            <h5 class="card-title">
                                                                 <b
-                                                                    style="font-weight: bold; color:rgb(73, 84, 160)">{{ $p->nama_lengkap }}</b> <i style="color: rgb(240, 228, 228)" class="fa fa-hourglass-half"></i>
-                                                            </h5> 
+                                                                    style="font-weight: bold; color:rgb(73, 84, 160)">{{ $p->nama_lengkap }}</b> <i style="color: rgb(32, 181, 236)" class="fa fa-check-circle"></i>
+                                                            </h5>
                                                             <p><b style="font-weight: bold;">Usia: {{ $p->usia }}
                                                                     Tahun</b></p>
                                                             <p class="card-text">Domisili : {{ $p->alamat }}</p>
@@ -133,7 +127,7 @@
 
                                                             <div class="text-left">
                                                                 <!-- Icon mata untuk detail -->
-                                                                <a href="{{ route('belum_diverifikasi.detail', $p->id) }}"
+                                                                <a href="{{ route('sudah_diverifikasi.detail', $p->id) }}"
                                                                     class="" title="Detail">
                                                                     <span class="badge badge-primary" title="Lihat Detail">
                                                                         <i class="fa fa-eye"></i>
@@ -226,7 +220,7 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Data Belum Diverifikasi</h5>
+                                        <h5>Data Sudah Diverifikasi</h5>
 
                                     </div>
                                     <div class="card-block">

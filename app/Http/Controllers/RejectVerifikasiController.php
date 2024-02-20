@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class SudahVerifikasiController extends Controller
+class RejectVerifikasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,8 +31,8 @@ class SudahVerifikasiController extends Controller
 
     public function index()
     {
-        $sudah_diverifikasi = Pendaftaran::where('status', 'Verifikasi')->orderBy('id', 'desc')->get();
-        return view('back.sudah_diverifikasi.index', compact('sudah_diverifikasi'));
+        $reject_diverifikasi = Pendaftaran::where('status', 'Reject')->orderBy('id', 'desc')->get();
+        return view('back.reject_diverifikasi.index', compact('reject_diverifikasi'));
     }
  
 
@@ -43,8 +43,8 @@ class SudahVerifikasiController extends Controller
         $status = $request->input('status');
 
         // Get the original data before the update
-        $sudah_diverifikasi = Pendaftaran::findOrFail($pendaftaranId);
-        $oldData = $sudah_diverifikasi->getOriginal();
+        $reject_diverifikasi = Pendaftaran::findOrFail($pendaftaranId);
+        $oldData = $reject_diverifikasi->getOriginal();
 
         // Update the status in the database
         Pendaftaran::where('id', $pendaftaranId)->update(['status' => $status]);
@@ -54,7 +54,7 @@ class SudahVerifikasiController extends Controller
 
         // Log the histori
         $loggedInUserId = Auth::id();
-        $this->simpanLogHistori('Update', 'Sudah Verifikasi', $pendaftaranId, $loggedInUserId, json_encode($oldData), json_encode($updatedData));
+        $this->simpanLogHistori('Update', 'Reject Verifikasi', $pendaftaranId, $loggedInUserId, json_encode($oldData), json_encode($updatedData));
 
         return response()->json(['message' => 'Status updated successfully']);
     }
@@ -100,18 +100,18 @@ class SudahVerifikasiController extends Controller
      */
     public function detail($id)
     {
-        $sudah_diverifikasi = Pendaftaran::where('id', $id)->first();
+        $reject_diverifikasi = Pendaftaran::where('id', $id)->first();
        
     
-        return view('back.sudah_diverifikasi.detail', compact('sudah_diverifikasi'));
+        return view('back.reject_diverifikasi.detail', compact('reject_diverifikasi'));
     }
 
     public function edit($id)
     {
-        $sudah_diverifikasi = Pendaftaran::where('id', $id)->first();
+        $reject_diverifikasi = Pendaftaran::where('id', $id)->first();
        
     
-        return view('back.sudah_diverifikasi.detail', compact('sudah_diverifikasi'));
+        return view('back.reject_diverifikasi.detail', compact('reject_diverifikasi'));
     }
 
     /**

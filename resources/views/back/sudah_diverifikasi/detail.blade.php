@@ -1,6 +1,6 @@
 @extends('back.layouts.app')
-@section('title', 'Halaman Detail Pendaftaran Belum Verifikasi')
-@section('subtitle', 'Menu Detail Pendaftaran Belum Verifikasi')
+@section('title', 'Halaman Detail Pendaftaran Sudah Verifikasi')
+@section('subtitle', 'Menu Detail Pendaftaran Sudah Verifikasi')
 @push('css')
     {{-- <link rel="stylesheet" href="{{ asset('template') }}/files/bower_components/select2/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/files/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" />
@@ -28,7 +28,7 @@
                     <div class="page-header-title">
                         <i class="feather icon-list bg-c-blue"></i>
                         <div class="d-inline">
-                            <h5>Detail Pendaftaran Belum Verifikasi</h5>
+                            <h5>Detail Pendaftaran Sudah Verifikasi</h5>
                             <span>Silahkan isi dengan data yang sesuai dan valid !</span>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/"><i class="feather icon-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#!">Halaman Detail Pendaftaran Belum Verifikasi</a>
+                            <li class="breadcrumb-item"><a href="#!">Halaman Detail Pendaftaran Sudah Verifikasi</a>
                             </li>
 
                         </ul>
@@ -58,11 +58,11 @@
                             <div class="col-sm-12">
 
 
-                                
-                                    {{-- <div class="card-header">
-                                        <h5>Data Detail Pendaftaran Belum Verifikasi : {{ $belum_diverifikasi->nama_lengkap }}</h5>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Data Detail Pendaftaran Sudah Verifikasi : {{ $sudah_diverifikasi->nama_lengkap }}</h5>
 
-                                    </div> --}}
+                                    </div>
                                     <div class="card-block">
                                         <div class="card">
                                             <div class="card-block tab-icon">
@@ -110,7 +110,7 @@
                                                                                     <div class="col-sm-6">
                                                                                         <label class="col-form-label"
                                                                                             for="nama_job">Nama Detail
-                                                                                            Pendaftaran Belum
+                                                                                            Pendaftaran Sudah
                                                                                             Verifikasi</label>
                                                                                         <input type="text"
                                                                                             class="form-control form-control-success"
@@ -689,7 +689,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="/belum_diverifikasi"
+                                                                <a href="/sudah_diverifikasi"
                                                                     class="btn btn-warning waves-effect waves-light mt-3"><i
                                                                         class="fas fa-undo"></i>
                                                                     Kembali
@@ -723,7 +723,7 @@
 
 
 
-                               
+                                </div>
                             </div>
                         </div>
 

@@ -15,6 +15,8 @@ use App\Http\Controllers\StepController;
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RejectVerifikasiController;
+use App\Http\Controllers\SudahVerifikasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,10 +36,24 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'index']);
+
+
+// Belum Verifikasi
 Route::get('/belum_diverifikasi', [BelumVerifikasiController::class, 'index']);
 Route::post('/update-status', [BelumVerifikasiController::class, 'updateStatus'])->name('update.status'); 
 Route::get('/belum_diverifikasi/{id}/detail', [BelumVerifikasiController::class, 'detail'])->name('belum_diverifikasi.detail');
 
+
+// Sudah Verifikasi
+Route::get('/sudah_diverifikasi', [SudahVerifikasiController::class, 'index']);
+Route::post('/update-status', [SudahVerifikasiController::class, 'updateStatus'])->name('update.status'); 
+Route::get('/sudah_diverifikasi/{id}/detail', [SudahVerifikasiController::class, 'detail'])->name('sudah_diverifikasi.detail');
+
+
+// Reject Verifikasi
+Route::get('/reject_diverifikasi', [RejectVerifikasiController::class, 'index']);
+Route::post('/update-status', [RejectVerifikasiController::class, 'updateStatus'])->name('update.status'); 
+Route::get('/reject_diverifikasi/{id}/detail', [RejectVerifikasiController::class, 'detail'])->name('reject_diverifikasi.detail');
 
 // Kategori Job
 Route::get('/kategori_job', [KategoriJobController::class, 'index']);

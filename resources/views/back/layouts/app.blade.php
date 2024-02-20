@@ -445,12 +445,12 @@
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="/verifikasi" class="waves-effect waves-dark">
+                                                <a href="/sudah_diverifikasi" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Sudah Diverifikasi</span>
                                                 </a>
                                             </li>
                                             <li class>
-                                                <a href="/reject" class="waves-effect waves-dark">
+                                                <a href="/reject_diverifikasi" class="waves-effect waves-dark">
                                                     <span class="pcoded-mtext">Reject</span>
                                                 </a>
                                             </li>
