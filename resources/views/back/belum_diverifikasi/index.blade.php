@@ -108,7 +108,7 @@
                                                         <div class="card-block">
                                                             <h5 class="card-title">
                                                                 <span
-                                                                    class="badge badge-pill badge-warning"><i style="color: rgb(191, 14, 17)" class="fa fa-hourglass-half"></i> Pending</span>
+                                                                    class="badge badge-pill badge-warning"><i style="color: rgb(23, 22, 22)" class="fa fa-hourglass-half"></i> Pending</span>
                                                             </h5>
                                                             <h5 class="card-title">
                                                                 <b
