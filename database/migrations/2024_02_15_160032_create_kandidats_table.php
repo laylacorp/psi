@@ -84,6 +84,12 @@ return new class extends Migration
             $table->string('video_skill')->nullable();
             $table->string('password')->nullable();
             $table->string('status')->nullable();
+
+             // informasi kontak
+             $table->string('email')->nullable();
+             $table->string('no_hp')->nullable();
+             $table->string('no_wa')->nullable();
+         
             $table->timestamps();
         });
     }

@@ -2,27 +2,34 @@
 @section('title', 'Halaman Sudah Diverifikasi')
 @section('subtitle', 'Menu Sudah Diverifikasi')
 @push('css')
-<style>
-    .card-sub {
-        transition: transform 0.2s ease-in-out;
-    }
+    <style>
+        .card-sub {
+            transition: transform 0.2s ease-in-out;
+        }
 
-    .card-sub:hover {
-        transform: scale(1.05);
-    }
+        .card-sub:hover {
+            transform: scale(1.05);
+        }
 
-    .card-img-container {
-        overflow: hidden;
-        height: 200px; /* Sesuaikan dengan tinggi yang diinginkan */
-    }
+        .card-img-container {
+            overflow: hidden;
+            height: 200px;
+            width: 100%;
+            /* Adjust the width as needed */
+        }
 
-    .card-img-container img {
-        width: 100%;
-        object-fit: cover;
-        object-position: center; /* Atur posisi gambar agar tetap di tengah */
-        height: 100%;
-    }
-</style>
+        .card-img-container img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+        }
+
+
+ 
+      
+
+    </style>
 @endpush
 
 
@@ -76,12 +83,16 @@
                                         <div class="col-lg-12 col-xl-3">
                                             <!-- Add this inside your HTML body -->
                                             <div class="search-container">
-                                                <input type="text" class="form-control" id="searchInput"
-                                                    placeholder="Search...">
-                                                <br>
-                                                <button class="btn btn-primary waves-effect waves-light"
-                                                    onclick="searchCards()">Search</button>
+                                                <div style="display: inline-block;">
+                                                    <input type="text" class="form-control" id="searchInput"
+                                                        placeholder="Search...">
+                                                </div>
+                                                <div style="display: inline-block;">
+                                                    <button class="btn btn-primary waves-effect waves-light"
+                                                        onclick="searchCards()">Search</button>
+                                                </div>
                                             </div>
+
                                             <br><br>
                                         </div>
 
@@ -89,31 +100,62 @@
                                             @forelse ($sudah_diverifikasi as $p)
                                                 <div class="col-lg-12 col-xl-3">
                                                     <div class="card-sub shadow p-3 mb-5 bg-white rounded">
-                                                        <div class="card-img-container">
-                                                            @if ($p->foto)
-                                                                <a href="/upload/foto/{{ $p->foto }}" target="_blank">
-                                                                    <img class="card-img-top img-fluid"
-                                                                        src="/upload/foto/{{ $p->foto }}"
-                                                                        alt="Card image cap">
-                                                                </a>
-                                                            @else
-                                                                <!-- Foto default jika tidak ada foto -->
-                                                                <img class="card-img-top img-fluid" src="/upload/foto/foto.png"
-                                                                    alt="Default Image">
-                                                            @endif
+                                                        <div class="col-lg-12 col-xl-12">
+                                                            <div class="card-img-container d-flex justify-content-between">
+                                                                <div style="flex: 1;">
+                                                                    <!-- Image -->
+                                                                    @if ($p->foto)
+                                                                        <a href="/upload/foto/{{ $p->foto }}"
+                                                                            target="_blank">
+                                                                            <img class="card-img-top img-fluid"
+                                                                                src="/upload/foto/{{ $p->foto }}"
+                                                                                alt="Card image cap"
+                                                                                style="border-radius:1rem;">
+                                                                        </a>
+                                                                    @else
+                                                                        <!-- Default Image if no foto -->
+                                                                        <img class="card-img-top img-fluid"
+                                                                            src="/upload/foto/foto.png" alt="Default Image">
+                                                                    @endif
+                                                                </div>
+                                                                <div style="flex: 1; text-align: left; padding-left:9px;">
+                                                                    <br>
+                                                                    <h5 class="card-title">
+                                                                        <a href="">
+                                                                            <span class="badge badge-pill badge-primary"
+                                                                                style="color: #ebeff1;"><i
+                                                                                    class="fa fa-eye"></i> Preview</span>
+                                                                        </a>
+                                                                    </h5>
+
+                                                                    <p><b style="font-weight: bold;">Usia:
+                                                                            {{ $p->usia }}
+                                                                            Tahun</b></p>
+                                                                    <p class="card-text" style="margin-top: -8%"
+                                                                        style="font-family: 'Poppins', sans-serif; text-align: justify;">
+                                                                        Domisili :
+                                                                        {{ $p->alamat }}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
+
+
                                                         <div class="card-block">
+
+
+                                                            <a href="{{ route('sudah_diverifikasi.detail', $p->id) }}">
+                                                                <h5 class="card-title">
+                                                                    <b
+                                                                        style="font-weight: bold; color:#00324F; font-family: 'Poppins', sans-serif;">{{ $p->nama_lengkap }}</b>
+                                                                </h5>
+                                                            </a>
+
+
+
                                                             <h5 class="card-title">
-                                                                <b
-                                                                    style="font-weight: bold; color:rgb(73, 84, 160)">{{ $p->nama_lengkap }}</b> <i style="color: rgb(32, 181, 236)" class="fa fa-check-circle"></i>
-                                                            </h5>
-                                                            <p><b style="font-weight: bold;">Usia: {{ $p->usia }}
-                                                                    Tahun</b></p>
-                                                            <p class="card-text">Domisili : {{ $p->alamat }}</p>
-                                                            <h5 class="card-title">
-                                                                <span
-                                                                    class="badge badge-pill badge-success">{{ $p->nama_kategori_job }}</span>
+                                                                <span class="badge badge-pill badge-warning"
+                                                                    style="color: #00324F;">{{ $p->nama_kategori_job }}</span>
                                                             </h5>
 
                                                             <div class="text-left">
@@ -127,22 +169,29 @@
 
                                                             <div class="text-left">
                                                                 <!-- Icon mata untuk detail -->
-                                                                <a href="{{ route('sudah_diverifikasi.detail', $p->id) }}"
-                                                                    class="" title="Detail">
-                                                                    <span class="badge badge-primary" title="Lihat Detail">
-                                                                        <i class="fa fa-eye"></i>
-                                                                        Lihat Detail
-                                                                    </span>
-                                                                </a>
-                                                                <a href="#" class="ml-2" title="Status"
-                                                                    data-toggle="modal"
-                                                                    data-target="#ubahStatusModal{{ $p->id }}">
-                                                                    <span class="badge badge-warning ml-2"
-                                                                        title="Ubah Status">
+
+                                                                <div class="d-flex">
+                                                                    <a href="" data-toggle="modal"
+                                                                        data-target="#ubahStatusModal{{ $p->id }}"
+                                                                        class="form-control mr-2"
+                                                                        style="background-color: #00324F; color: #fff; border-radius: 1rem; font-size: 12px; "
+                                                                        title="Detail">
                                                                         <i class="fa fa-edit"></i>
                                                                         Ubah Status
-                                                                    </span>
-                                                                </a>
+
+                                                                    </a>
+                                                                    <a href="{{ route('sudah_diverifikasi.detail', $p->id) }}"
+                                                                        class="form-control"
+                                                                        style="background-color: transparent; color: #00324F; border-radius: 1rem; font-size: 12px;  border: 1px solid #00324F;"
+                                                                        title="Detail"><i class="fa fa-arrow-right"></i>
+                                                                        Lihat Detail</a>
+
+                                                                </div>
+
+
+
+
+
                                                             </div>
 
                                                         </div>
@@ -193,7 +242,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @empty
+                                            @empty
                                                 <div class="alert alert-warning" role="alert">
                                                     Ooops.... Data Kosong !
                                                 </div>
@@ -204,78 +253,15 @@
                                         </div>
 
                                         <!-- Add this inside your HTML body, after the card layout code -->
+                                        <!-- Tambahkan ini untuk menampilkan pagination links -->
                                         <div class="pagination-container d-flex justify-content-center">
-                                            <ul class="pagination">
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <!-- Add more page items as needed -->
-                                            </ul>
+                                            {{ $sudah_diverifikasi->links('pagination::bootstrap-4') }}
                                         </div>
 
                                     </div>
 
 
                                 </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Data Sudah Diverifikasi</h5>
-
-                                    </div>
-                                    <div class="card-block">
-                                        <button type="button" class="btn btn-primary mobtn"><i
-                                                class="fas fa-plus-circle"></i> Add Data</button>
-                                        <br><br>
-                                        <div class="dt-responsive table-responsive">
-                                            <table id="multi-colum-dt" class="table table-striped table-bordered nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Nama</th>
-                                                        <th>Negara</th>
-                                                        <th>Employer</th>
-                                                        <th>Comitment Fee</th>
-                                                        <th>Industri Pekerjaan</th>
-                                                        <th class="text-center">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Rafi Heryadi</td>
-                                                        <td>Arab Saudi</td>
-                                                        <td>Mariot Hotel</td>
-                                                        <td>500.000</td>
-                                                        <td>Hospitality</td>
-                                                        <td class="text-center">
-                                                            <a style="color: rgb(242, 236, 236)" href="#"
-                                                                class="btn btn-sm btn-primary btn-edit"
-                                                                data-toggle="modal" data-target="#modal-edit"
-                                                                data-id="" style="color: black">
-                                                                <i class="fas fa-edit"></i> Detail
-                                                            </a>
-                                                            <a style="color: rgb(242, 236, 236)" href="#"
-                                                                class="btn btn-sm btn-success btn-verifikasi"
-                                                                data-toggle="modal" data-target="#modal-verifikasi"
-                                                                data-id="" style="color: black">
-                                                                <i class="fas fa-edit"></i> Verifikasi
-                                                            </a>
-                                                            <button class="btn btn-sm btn-danger btn-hapus" data-id=""
-                                                                style="color: white">
-                                                                <i class="fas fa-trash-alt"></i> Delete
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
 
 
 
@@ -293,6 +279,7 @@
 
         @push('script')
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            
             <!-- Add this inside your HTML body, after the card layout code -->
             <script>
                 function searchCards() {

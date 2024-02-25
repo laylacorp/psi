@@ -31,10 +31,10 @@ class SudahVerifikasiController extends Controller
 
     public function index()
     {
-        $sudah_diverifikasi = Pendaftaran::where('status', 'Verifikasi')->orderBy('id', 'desc')->get();
+        $sudah_diverifikasi = Pendaftaran::where('status', 'Verifikasi')->orderBy('id', 'desc')->paginate(4); // Ganti 10 dengan jumlah item per halaman yang diinginkan
         return view('back.sudah_diverifikasi.index', compact('sudah_diverifikasi'));
     }
- 
+    
 
 
     public function updateStatus(Request $request)

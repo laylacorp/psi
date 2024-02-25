@@ -14,16 +14,21 @@
         .card-img-container {
             overflow: hidden;
             height: 200px;
-            /* Sesuaikan dengan tinggi yang diinginkan */
+            width: 100%;
+            /* Adjust the width as needed */
         }
 
         .card-img-container img {
             width: 100%;
             object-fit: cover;
             object-position: center;
-            /* Atur posisi gambar agar tetap di tengah */
             height: 100%;
         }
+
+
+ 
+      
+
     </style>
 @endpush
 
@@ -95,31 +100,58 @@
                                             @forelse ($belum_diverifikasi as $p)
                                                 <div class="col-lg-12 col-xl-3">
                                                     <div class="card-sub shadow p-3 mb-5 bg-white rounded">
-                                                        <div class="card-img-container">
-                                                            @if ($p->foto)
-                                                                <a href="/upload/foto/{{ $p->foto }}" target="_blank">
-                                                                    <img class="card-img-top img-fluid"
-                                                                        src="/upload/foto/{{ $p->foto }}"
-                                                                        alt="Card image cap">
-                                                                </a>
-                                                            @else
-                                                                <!-- Foto default jika tidak ada foto -->
-                                                                <img class="card-img-top img-fluid"
-                                                                    src="/upload/foto/foto.png" alt="Default Image">
-                                                            @endif
+                                                        <div class="col-lg-12 col-xl-12">
+                                                            <div class="card-img-container d-flex justify-content-between">
+                                                                <div style="flex: 1;">
+                                                                    <!-- Image -->
+                                                                    @if ($p->foto)
+                                                                        <a href="/upload/foto/{{ $p->foto }}"
+                                                                            target="_blank">
+                                                                            <img class="card-img-top img-fluid"
+                                                                                src="/upload/foto/{{ $p->foto }}"
+                                                                                alt="Card image cap"
+                                                                                style="border-radius:1rem;">
+                                                                        </a>
+                                                                    @else
+                                                                        <!-- Default Image if no foto -->
+                                                                        <img class="card-img-top img-fluid"
+                                                                            src="/upload/foto/foto.png" alt="Default Image">
+                                                                    @endif
+                                                                </div>
+                                                                <div style="flex: 1; text-align: left; padding-left:9px;">
+                                                                    <br>
+                                                                    <h5 class="card-title">
+                                                                        <a href="">
+                                                                            <span class="badge badge-pill badge-primary"
+                                                                                style="color: #ebeff1;"><i
+                                                                                    class="fa fa-eye"></i> Preview</span>
+                                                                        </a>
+                                                                    </h5>
+
+                                                                    <p><b style="font-weight: bold;">Usia:
+                                                                            {{ $p->usia }}
+                                                                            Tahun</b></p>
+                                                                    <p class="card-text" style="margin-top: -8%"
+                                                                        style="font-family: 'Poppins', sans-serif; text-align: justify;">
+                                                                        Domisili :
+                                                                        {{ $p->alamat }}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
+
+
                                                         <div class="card-block">
-                                                            <h5 class="card-title">
-                                                                <b
-                                                                    style="font-weight: bold; color:#00324F font-family: 'Poppins', sans-serif;" >{{ $p->nama_lengkap }}</b>
-                                                                
-                                                            </h5>
-                                                            <p><b style="font-weight: bold;">Usia: {{ $p->usia }}
-                                                                    Tahun</b></p>
-                                                            <p class="card-text"
-                                                                style="font-family: 'Poppins', sans-serif;">Domisili :
-                                                                {{ $p->alamat }}</p>
+
+
+                                                            <a href="{{ route('belum_diverifikasi.detail', $p->id) }}">
+                                                                <h5 class="card-title">
+                                                                    <b
+                                                                        style="font-weight: bold; color:#00324F; font-family: 'Poppins', sans-serif;">{{ $p->nama_lengkap }}</b>
+                                                                </h5>
+                                                            </a>
+
+
 
                                                             <h5 class="card-title">
                                                                 <span class="badge badge-pill badge-warning"
@@ -151,12 +183,8 @@
                                                                     <a href="{{ route('belum_diverifikasi.detail', $p->id) }}"
                                                                         class="form-control"
                                                                         style="background-color: transparent; color: #00324F; border-radius: 1rem; font-size: 12px;  border: 1px solid #00324F;"
-                                                                        title="Detail">
-
-                                                                        <i class="fa fa-eye"></i>
-                                                                        Lihat Detail
-
-                                                                    </a>
+                                                                        title="Detail"><i class="fa fa-arrow-right"></i>
+                                                                        Lihat Detail</a>
 
                                                                 </div>
 
@@ -225,78 +253,15 @@
                                         </div>
 
                                         <!-- Add this inside your HTML body, after the card layout code -->
+                                        <!-- Tambahkan ini untuk menampilkan pagination links -->
                                         <div class="pagination-container d-flex justify-content-center">
-                                            <ul class="pagination">
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <!-- Add more page items as needed -->
-                                            </ul>
+                                            {{ $belum_diverifikasi->links('pagination::bootstrap-4') }}
                                         </div>
 
                                     </div>
 
 
                                 </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Data Belum Diverifikasi</h5>
-
-                                    </div>
-                                    <div class="card-block">
-                                        <button type="button" class="btn btn-primary mobtn"><i
-                                                class="fas fa-plus-circle"></i> Add Data</button>
-                                        <br><br>
-                                        <div class="dt-responsive table-responsive">
-                                            <table id="multi-colum-dt" class="table table-striped table-bordered nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Nama</th>
-                                                        <th>Negara</th>
-                                                        <th>Employer</th>
-                                                        <th>Comitment Fee</th>
-                                                        <th>Industri Pekerjaan</th>
-                                                        <th class="text-center">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Rafi Heryadi</td>
-                                                        <td>Arab Saudi</td>
-                                                        <td>Mariot Hotel</td>
-                                                        <td>500.000</td>
-                                                        <td>Hospitality</td>
-                                                        <td class="text-center">
-                                                            <a style="color: rgb(242, 236, 236)" href="#"
-                                                                class="btn btn-sm btn-primary btn-edit"
-                                                                data-toggle="modal" data-target="#modal-edit"
-                                                                data-id="" style="color: black">
-                                                                <i class="fas fa-edit"></i> Detail
-                                                            </a>
-                                                            <a style="color: rgb(242, 236, 236)" href="#"
-                                                                class="btn btn-sm btn-success btn-verifikasi"
-                                                                data-toggle="modal" data-target="#modal-verifikasi"
-                                                                data-id="" style="color: black">
-                                                                <i class="fas fa-edit"></i> Verifikasi
-                                                            </a>
-                                                            <button class="btn btn-sm btn-danger btn-hapus" data-id=""
-                                                                style="color: white">
-                                                                <i class="fas fa-trash-alt"></i> Delete
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
 
 
 
@@ -314,6 +279,7 @@
 
         @push('script')
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            
             <!-- Add this inside your HTML body, after the card layout code -->
             <script>
                 function searchCards() {

@@ -31,11 +31,10 @@ class BelumVerifikasiController extends Controller
 
     public function index()
     {
-        $belum_diverifikasi = Pendaftaran::where('status', 'Pending')->orderBy('id', 'desc')->get();
+        $belum_diverifikasi = Pendaftaran::where('status', 'Pending')->orderBy('id', 'desc')->paginate(4); // Ganti 10 dengan jumlah item per halaman yang diinginkan
         return view('back.belum_diverifikasi.index', compact('belum_diverifikasi'));
     }
- 
-
+    
 
     public function updateStatus(Request $request)
     {
